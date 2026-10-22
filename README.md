@@ -31,8 +31,8 @@ pnpm start        # serve out/ locally
 
 Edit files under `src/content/`. Notable fields:
 
-- `profile.resumeUrl` — Google Drive resume link; **leave empty to hide the Resume button**
-- `seo.ogImage` — set when `/og.png` exists (TODO)
+- `profile.resumeUrl` — Google Drive resume link; empty hides the Resume button
+- `seo.ogImage` — `/og.png` (static share card; source in `design/og/`)
 
 Hard rules: no phone numbers; project links are live URLs only; no project images.
 

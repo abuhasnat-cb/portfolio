@@ -79,8 +79,16 @@ describe("content schema", () => {
     ]);
   });
 
-  it("hides resume when URL is empty", () => {
-    expect(content.profile.resumeUrl).toBe("");
+  it("exposes the Google Drive resume URL", () => {
+    expect(content.profile.resumeUrl).toMatch(
+      /^https:\/\/drive\.google\.com\/file\/d\//,
+    );
+  });
+
+  it("sets a root-relative OG image path", () => {
+    expect(content.seo.ogImage).toBe("/og.png");
+    expect(content.seo.title).toContain("AI-native Software Engineer");
+    expect(content.seo.description).toContain("AI-native Software Engineer");
   });
 });
 
@@ -96,6 +104,8 @@ describe("generated markdown artifacts", () => {
     expect(md).toContain("hasnat.ovee@gmail.com");
     expect(md).toContain("simplyeloped.com");
     expect(md).toMatch(/Tags:.*Laravel/);
+    expect(md).toContain(`[Resume](${content.profile.resumeUrl})`);
+    expect(md).toContain(`[Resume (PDF)](${content.profile.resumeUrl})`);
     expect(md).not.toMatch(PHONE_PATTERN);
     // front matter
     expect(md.startsWith("---\n")).toBe(true);
@@ -110,6 +120,7 @@ describe("generated markdown artifacts", () => {
     expect(txt).toContain("## Projects");
     expect(txt).toContain("## Links");
     expect(txt).toContain("/index.md");
+    expect(txt).toContain(`[Resume (PDF)](${content.profile.resumeUrl})`);
     expect(txt).not.toMatch(PHONE_PATTERN);
   });
 });
@@ -129,6 +140,16 @@ describe("JSON-LD", () => {
     const person = graph.find((n) => n["@type"] === "Person")!;
     expect(person.alternateName).toBe("Md. Abu Hasnat Ovee");
     expect(person.name).toBe("Abu Hasnat Ovee");
+    const personImage = person.image as Record<string, unknown>;
+    expect(personImage.url).toBe("https://oveehasnat.com/og.png");
+    expect(personImage.width).toBe(1200);
+    expect(personImage.height).toBe(630);
+    expect(personImage.encodingFormat).toBe("image/png");
+
+    const page = graph.find((n) => n["@type"] === "ProfilePage")!;
+    expect((page.image as Record<string, unknown>).url).toBe(
+      "https://oveehasnat.com/og.png",
+    );
 
     const list = graph.find((n) => n["@type"] === "ItemList")!;
     expect(list.numberOfItems).toBe(content.projects.length);

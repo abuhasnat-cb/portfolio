@@ -16,7 +16,7 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   webServer: {
-    command: `pnpm exec serve .preview -l ${PORT}`,
+    command: `node scripts/prepare-pages-preview.mjs && pnpm exec serve .preview -l ${PORT}`,
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

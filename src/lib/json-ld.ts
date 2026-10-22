@@ -9,6 +9,21 @@ export function buildJsonLd(content: SiteContent) {
   const websiteId = `${base}/#website`;
   const profilePageId = `${base}/#profilepage`;
   const projectsId = `${base}/#projects`;
+  const ogImageUrl = seo.ogImage
+    ? seo.ogImage.startsWith("http")
+      ? seo.ogImage
+      : `${base}${seo.ogImage.startsWith("/") ? "" : "/"}${seo.ogImage}`
+    : null;
+  const ogImageObject = ogImageUrl
+    ? {
+        "@type": "ImageObject" as const,
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        encodingFormat: "image/png",
+        caption: "Abu Hasnat Ovee, AI-native Software Engineer",
+      }
+    : null;
 
   const orgEntries = new Map<
     string,
@@ -72,6 +87,7 @@ export function buildJsonLd(content: SiteContent) {
       },
       sameAs: profile.links.map((l) => l.href),
       knowsAbout,
+      ...(ogImageObject ? { image: ogImageObject } : {}),
     },
     {
       "@type": "WebSite",
@@ -91,6 +107,9 @@ export function buildJsonLd(content: SiteContent) {
       mainEntity: { "@id": personId },
       dateModified: profile.updated,
       inLanguage: "en",
+      ...(ogImageObject
+        ? { image: ogImageObject, primaryImageOfPage: ogImageObject }
+        : {}),
     },
     {
       "@type": "ItemList",

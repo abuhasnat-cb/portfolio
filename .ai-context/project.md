@@ -29,6 +29,7 @@ Ship a fast, accessible, SEO/AEO-strong personal portfolio for **Abu Hasnat Ovee
 - **No project images** — text + tags only.
 - **No chanhdai branding** — layout inspiration only; keep MIT attribution for adapted utilities.
 - Resume Google Drive URL is configured in `profile.resumeUrl`; **hide the Resume button while empty**.
+- Share card is the static `public/og.png` (1200×630); do not invent phone numbers.
 - OG image is deferred (`seo.ogImage` stays `null` until later).
 
 ## Brand

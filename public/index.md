@@ -15,7 +15,7 @@ updated: 2026-10-22
 
 _Full-stack engineer working with domain-driven design and agent-first workflows._
 
-[Get in touch](#contact) · [Email](mailto:hasnat.ovee@gmail.com)
+[Resume](https://drive.google.com/file/d/1n2UPcdnSnn6oWJz-YdfI_WQrEWGo8Kgt/view?usp=drivesdk) · [Get in touch](#contact) · [Email](mailto:hasnat.ovee@gmail.com)
 
 ## Info
 
@@ -168,5 +168,6 @@ Hiring for a Software Engineer (L2/L3)? Open to roles in Bangladesh or remote.
 - [GitHub](https://github.com/Ovee-Hasnat)
 - [LinkedIn](https://www.linkedin.com/in/hasnat-ovee)
 - [Upwork](https://www.upwork.com/freelancers/~0100349f45b74ac206)
+- [Resume (PDF)](https://drive.google.com/file/d/1n2UPcdnSnn6oWJz-YdfI_WQrEWGo8Kgt/view?usp=drivesdk)
 
 <!-- oveehasnat.com · Dhaka · GMT+6 · human version: https://oveehasnat.com/ -->

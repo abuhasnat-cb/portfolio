@@ -27,7 +27,7 @@ Use this on every meaningful content or head change:
 
 - [ ] Unique title + description (layout metadata)
 - [ ] Canonical URL
-- [ ] Open Graph + Twitter tags (OG image optional until TODO cleared)
+- [ ] Open Graph + Twitter tags (`/og.png`, 1200×630; source in `design/og/`)
 - [ ] `<link rel="alternate" type="text/markdown" href="/index.md">`
 - [ ] JSON-LD `@graph`: Person (with `alternateName`), WebSite, ProfilePage, ItemList of projects, Organizations
 - [ ] Semantic headings (`h1` once; section `h2`s)

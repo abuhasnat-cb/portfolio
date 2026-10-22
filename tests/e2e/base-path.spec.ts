@@ -29,16 +29,28 @@ test.describe("GitHub Pages base path (/portfolio)", () => {
     const mdLink = page.getByRole("link", { name: "/index.md" });
     await expect(mdLink).toHaveAttribute("href", "/portfolio/index.md");
 
-    // Favicons under base path
+    // Favicons + OG under base path
     for (const path of [
       "/portfolio/favicon.ico",
       "/portfolio/icon.png",
       "/portfolio/icon.svg",
       "/portfolio/apple-touch-icon.png",
+      "/portfolio/og.png",
     ]) {
       const iconRes = await page.request.get(path);
       expect(iconRes.status(), path).toBe(200);
     }
+
+    const ogImage = await page
+      .locator('meta[property="og:image"]')
+      .getAttribute("content");
+    expect(ogImage).toMatch(
+      /^https:\/\/abuhasnat-cb\.github\.io\/portfolio\/og\.png$/,
+    );
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
+      "content",
+      /^https:\/\/abuhasnat-cb\.github\.io\/portfolio\/og\.png$/,
+    );
 
     // Canonical stays production even on the preview build
     const canonical = await page

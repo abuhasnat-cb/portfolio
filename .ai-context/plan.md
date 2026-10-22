@@ -19,8 +19,8 @@
 - [ ] Owner: enable branch protection on `develop` / `main` (require CI)
 - [x] Owner: **Settings → Pages → Source = GitHub Actions** (set; `configure-pages` enablement alone was denied by the integration)
 - [ ] Owner: Cloudflare Pages project → build `pnpm build`, output `out`, Node 22
-- [ ] Owner: set `profile.resumeUrl` to Google Drive share link when ready
-- [ ] Generate and host OG image; set `seo.ogImage`
+- [x] Set `profile.resumeUrl` to Google Drive share link
+- [x] Static OG image (`public/og.png` + `design/og/` source); wire meta + JSON-LD
 - [ ] Replace AO mark placeholder with final logo SVG
 - [ ] Point custom domain `oveehasnat.com` at Cloudflare Pages
 - [ ] After production is live: disable or remove GitHub Pages preview workflow

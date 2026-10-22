@@ -9,6 +9,7 @@ Contact: hasnat.ovee@gmail.com. Last updated: 2026-10-22.
 ## Profile
 
 - [Full profile (markdown)](https://oveehasnat.com/index.md): About, work experience, projects, stack and contact in one file
+- [Resume (PDF)](https://drive.google.com/file/d/1n2UPcdnSnn6oWJz-YdfI_WQrEWGo8Kgt/view?usp=drivesdk): Resume
 - [Website](https://oveehasnat.com/): Human-readable version of this profile
 
 ## Projects

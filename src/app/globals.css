@@ -46,7 +46,7 @@
   --line: #1e1e21;
   --fg: #ececee;
   --muted: #a0a0a8; /* ≥4.5:1 on #09090b */
-  --faint: #9a9aa3; /* ≥4.5:1 on #09090b (was #76767e ≈4.42) */
+  --faint: #7c7c84; /* 4.81:1 on #09090b */
   --on-accent: #0b0b0c;
   --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
   --accent-line: color-mix(in srgb, var(--accent) 35%, transparent);
