@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-22 — OG image, resume URL, AI-native meta
+
+- Static `public/og.png` (1200×630) with source in `design/og/`; OG/Twitter + JSON-LD image wired (base-path aware).
+- `profile.resumeUrl` → Google Drive; Resume CTA in header/contact/agent markdown/`index.md`/`llms.txt`.
+- Meta title/description use **AI-native Software Engineer** (visible hero/about unchanged).
+- Dark `--faint` `#7c7c84` (4.81:1 on `#09090b`). ADR 0011.
+
 ## 2026-10-22 — QA polish (tokens, favicon, canonical)
 
 - Email me matches header primary control geometry.

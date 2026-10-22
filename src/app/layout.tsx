@@ -57,8 +57,7 @@ export const metadata: Metadata = {
     siteName: seo.siteName,
     locale: seo.locale,
     title: seo.title,
-    description:
-      "Full-stack engineer working with domain-driven design and agent-first workflows. Dhaka, BD · Open to L2/L3 roles.",
+    description: seo.description,
     url: seo.canonical,
     ...(seo.ogImage
       ? {
@@ -67,7 +66,8 @@ export const metadata: Metadata = {
               url: seo.ogImage,
               width: 1200,
               height: 630,
-              alt: `${profile.name}, ${profile.role}`,
+              type: "image/png",
+              alt: "Abu Hasnat Ovee, AI-native Software Engineer",
             },
           ],
         }
@@ -76,8 +76,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: seo.title,
-    description:
-      "Full-stack engineer working with domain-driven design and agent-first workflows. Dhaka, BD · Open to L2/L3 roles.",
+    description: seo.description,
     ...(seo.ogImage ? { images: [seo.ogImage] } : {}),
   },
   other: {

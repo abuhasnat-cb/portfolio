@@ -52,11 +52,53 @@ test.describe("portfolio", () => {
       expect(res.status(), path).toBe(200);
     }
 
-    // Resume hidden while URL empty
-    await expect(page.getByRole("link", { name: /Resume/i })).toHaveCount(0);
+    // Resume opens Google Drive in a new tab (header CTA; contact also has Resume (PDF))
+    const resume = page
+      .getByRole("navigation", { name: "Primary" })
+      .getByRole("link", { name: "Resume", exact: true });
+    await expect(resume).toBeVisible();
+    await expect(resume).toHaveAttribute(
+      "href",
+      /drive\.google\.com\/file\/d\//,
+    );
+    await expect(resume).toHaveAttribute("target", "_blank");
+    await expect(resume).toHaveAttribute("rel", /noopener/);
 
     expect(errors, `console errors: ${errors.join("; ")}`).toEqual([]);
     expect(failed, `404s: ${failed.join("; ")}`).toEqual([]);
+  });
+
+  test("open graph and twitter meta tags point at /og.png", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    const ogImage = page.locator('meta[property="og:image"]');
+    await expect(ogImage).toHaveAttribute("content", /\/og\.png$/);
+    await expect(
+      page.locator('meta[property="og:image:width"]'),
+    ).toHaveAttribute("content", "1200");
+    await expect(
+      page.locator('meta[property="og:image:height"]'),
+    ).toHaveAttribute("content", "630");
+    await expect(
+      page.locator('meta[property="og:image:type"]'),
+    ).toHaveAttribute("content", "image/png");
+    await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute(
+      "content",
+      "Abu Hasnat Ovee, AI-native Software Engineer",
+    );
+    await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+      "content",
+      "summary_large_image",
+    );
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
+      "content",
+      /\/og\.png$/,
+    );
+
+    const ogRes = await page.request.get("/og.png");
+    expect(ogRes.status()).toBe(200);
+    expect(ogRes.headers()["content-type"]).toMatch(/image\/png/);
   });
 
   test("theme toggle switches class on html", async ({ page }) => {

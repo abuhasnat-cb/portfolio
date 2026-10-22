@@ -2,9 +2,9 @@ import type { Seo } from "./types";
 
 export const seo: Seo = {
   siteName: "Abu Hasnat Ovee",
-  title: "Abu Hasnat Ovee | AI-Native Full-Stack Software Engineer, Dhaka",
+  title: "Abu Hasnat Ovee | AI-native Software Engineer, Dhaka",
   description:
-    "Abu Hasnat Ovee is an AI-native full-stack software engineer in Dhaka building with React, Next.js, TypeScript, Node.js and Laravel. Open to L2/L3 roles.",
+    "Abu Hasnat Ovee is an AI-native Software Engineer in Dhaka building with React, Next.js, TypeScript, Node.js and Laravel. Open to L2/L3 roles.",
   keywords: [
     "Abu Hasnat Ovee",
     "AI-native software engineer",
@@ -16,8 +16,8 @@ export const seo: Seo = {
     "Dhaka",
   ],
   canonical: "https://oveehasnat.com/",
-  // TODO: generate and host an OG image at /og.png
-  ogImage: null,
+  /** Root-relative; Next resolves against deploy metadataBase (incl. Pages base path). */
+  ogImage: "/og.png",
   locale: "en_US",
   robots: "index, follow, max-image-preview:large, max-snippet:-1",
 };

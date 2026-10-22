@@ -12,7 +12,7 @@ const light = {
 const dark = {
   bg: "#09090b",
   muted: "#a0a0a8",
-  faint: "#9a9aa3",
+  faint: "#7c7c84",
   fg: "#ececee",
 };
 
@@ -27,5 +27,10 @@ describe("WCAG AA contrast tokens", () => {
     expect(contrastRatio(dark.muted, dark.bg)).toBeGreaterThanOrEqual(4.5);
     expect(contrastRatio(dark.faint, dark.bg)).toBeGreaterThanOrEqual(4.5);
     expect(contrastRatio(dark.fg, dark.bg)).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it("dark faint is ~4.81:1 on #09090b", () => {
+    expect(contrastRatio(dark.faint, dark.bg)).toBeGreaterThanOrEqual(4.8);
+    expect(contrastRatio(dark.faint, dark.bg)).toBeLessThan(4.85);
   });
 });
