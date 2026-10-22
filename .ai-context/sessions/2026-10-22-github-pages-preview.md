@@ -14,9 +14,9 @@ Ship a temporary preview at https://abuhasnat-cb.github.io/portfolio/ without ch
 
 ## Follow-ups for the owner
 
-- Flip Pages source to **GitHub Actions** if not already set (workflow now passes `enablement: true` to `configure-pages`, which may create the site automatically when the token allows).
-- After first successful deploy, confirm https://abuhasnat-cb.github.io/portfolio/
+- ~~Flip Pages source to **GitHub Actions**~~ — done by owner.
+- After successful deploy, confirm https://abuhasnat-cb.github.io/portfolio/
 
 ## Status
 
-First post-merge Pages run failed: Pages site not found. Follow-up: `enablement: true` on configure-pages.
+`configure-pages` `enablement: true` failed with *Resource not accessible by integration*. Owner set Pages Source = GitHub Actions. Redeploy triggered via merge to `develop` (workflow_dispatch / run-rerun also denied to the bot token).
