@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-22 — CI pnpm setup fix
+
+- Removed explicit `version: 10` from `pnpm/action-setup` so CI uses `packageManager` from `package.json` (avoids ERR_PNPM_BAD_PM_VERSION).
+
 ## 2026-10-22 — Initial portfolio setup
 
 - Scaffolded Next.js 15 (App Router) with static export, TypeScript strict, Tailwind v4, geist fonts, next-themes.
