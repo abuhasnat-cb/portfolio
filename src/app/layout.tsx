@@ -4,12 +4,14 @@ import { GeistMono } from "geist/font/mono";
 import { content } from "@/content";
 import { JsonLd } from "@/components/json-ld";
 import { ThemeProvider } from "@/components/theme-provider";
+import { isPreviewDeploy } from "@/lib/site-env";
 import "./globals.css";
 
 const { seo, profile } = content;
+const preview = isPreviewDeploy();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(profile.url),
+  metadataBase: new URL(`${profile.url}/`),
   title: {
     default: seo.title,
     template: `%s | ${profile.name}`,
@@ -18,21 +20,23 @@ export const metadata: Metadata = {
   authors: [{ name: profile.name, url: profile.url }],
   creator: profile.name,
   keywords: seo.keywords,
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  robots: preview
+    ? { index: false, follow: false }
+    : {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
+      },
   alternates: {
     canonical: seo.canonical,
     types: {
-      "text/markdown": [{ url: "/index.md", title: "Markdown version" }],
-      "text/plain": [{ url: "/llms.txt", title: "llms.txt" }],
+      "text/markdown": [{ url: "index.md", title: "Markdown version" }],
+      "text/plain": [{ url: "llms.txt", title: "llms.txt" }],
     },
   },
   openGraph: {
@@ -43,7 +47,6 @@ export const metadata: Metadata = {
     description:
       "Full-stack engineer working with domain-driven design and agent-first workflows. Dhaka, BD · Open to L2/L3 roles.",
     url: seo.canonical,
-    // TODO: add og.png when available
     ...(seo.ogImage
       ? {
           images: [

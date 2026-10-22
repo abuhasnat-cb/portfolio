@@ -19,7 +19,10 @@
     "test:e2e": "playwright test",
     "lhci": "lhci autorun",
     "links": "node scripts/check-links.mjs",
-    "ci": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm test:e2e && pnpm links"
+    "ci": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm test:e2e && pnpm links",
+    "build:pages": "NEXT_PUBLIC_BASE_PATH=/portfolio SITE_URL=https://abuhasnat-cb.github.io/portfolio pnpm build",
+    "test:e2e:pages": "playwright test -c playwright.pages.config.ts",
+    "preview:pages": "node scripts/prepare-pages-preview.mjs && serve .preview -l 4174"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-22 — GitHub Pages preview (/portfolio)
+
+- Env-driven `NEXT_PUBLIC_BASE_PATH` and `SITE_URL` (defaults: root + `https://oveehasnat.com`).
+- Preview deploy workflow on push to `develop` → https://abuhasnat-cb.github.io/portfolio/
+- Preview is noindex (`robots` meta + `robots.txt` Disallow).
+- Base-path Playwright e2e + ADR 0008.
+
 ## 2026-10-22 — CI pnpm setup fix
 
 - Removed explicit `version: 10` from `pnpm/action-setup` so CI uses `packageManager` from `package.json` (avoids ERR_PNPM_BAD_PM_VERSION).

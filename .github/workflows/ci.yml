@@ -112,3 +112,25 @@ jobs:
           name: static-site
           path: out
       - run: pnpm links
+
+  pages-path:
+    name: Base-path Pages e2e
+    runs-on: ubuntu-latest
+    needs: quality
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build with /portfolio base path
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /portfolio
+          SITE_URL: https://abuhasnat-cb.github.io/portfolio
+      - name: Nest out/ under .preview/portfolio
+        run: node scripts/prepare-pages-preview.mjs
+      - run: pnpm exec playwright install chromium --with-deps
+      - run: pnpm test:e2e:pages
