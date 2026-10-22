@@ -19,4 +19,4 @@ Ship a temporary preview at https://abuhasnat-cb.github.io/portfolio/ without ch
 
 ## Status
 
-`configure-pages` `enablement: true` failed with *Resource not accessible by integration*. Owner set Pages Source = GitHub Actions. Redeploy triggered via merge to `develop` (workflow_dispatch / run-rerun also denied to the bot token).
+`configure-pages` `enablement: true` failed with _Resource not accessible by integration_. Owner set Pages Source = GitHub Actions. Redeploy triggered via merge to `develop` (workflow_dispatch / run-rerun also denied to the bot token).

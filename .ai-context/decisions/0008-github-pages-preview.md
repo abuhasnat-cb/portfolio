@@ -20,7 +20,7 @@ Production hosting remains Cloudflare Pages at `oveehasnat.com`. Until that proj
 
 ## Consequences
 
-- The Pages workflow sets `configure-pages` `enablement: true`, but creating the site via the Actions token failed (*Resource not accessible by integration*).
+- The Pages workflow sets `configure-pages` `enablement: true`, but creating the site via the Actions token failed (_Resource not accessible by integration_).
 - Owner set **Settings → Pages → Source = GitHub Actions** once; subsequent deploys use that site.
 - Content URLs, JSON-LD, `index.md`, `llms.txt`, sitemap, and alternate links follow `SITE_URL`.
 - Plain `<a href>` paths use `withBasePath()`; Next `Link` gets `basePath` automatically.
