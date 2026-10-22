@@ -15,6 +15,7 @@
 
 - [ ] Owner: enable branch protection on `develop` / `main` (require CI)
 - [x] Owner: **Settings → Pages → Source = GitHub Actions** (set; `configure-pages` enablement alone was denied by the integration)
+- [ ] Owner: **Environments → github-pages → Deployment branches** — allow `develop` (currently only `main`; deploy job is rejected otherwise)
 - [ ] Owner: Cloudflare Pages project → build `pnpm build`, output `out`, Node 22
 - [ ] Owner: set `profile.resumeUrl` to Google Drive share link when ready
 - [ ] Generate and host OG image; set `seo.ogImage`
