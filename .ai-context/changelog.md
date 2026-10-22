@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-22 — Pages deploy blocked by environment branch policy
+
+- After Pages Source = GitHub Actions, build succeeds but deploy fails: `github-pages` environment allows only `main`. Owner must allow `develop`.
+
 ## 2026-10-22 — Pages redeploy after owner enablement
 
 - Owner set **Settings → Pages → Source = GitHub Actions**. Docs/plan updated; merge to `develop` retriggers the preview deploy.

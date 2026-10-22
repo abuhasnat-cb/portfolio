@@ -15,8 +15,9 @@ Ship a temporary preview at https://abuhasnat-cb.github.io/portfolio/ without ch
 ## Follow-ups for the owner
 
 - ~~Flip Pages source to **GitHub Actions**~~ — done by owner.
-- After successful deploy, confirm https://abuhasnat-cb.github.io/portfolio/
+- **Environments → github-pages → Deployment branches**: add `develop` (or allow all branches). Build+artifact already succeeds; deploy is rejected with _Branch "develop" is not allowed to deploy to github-pages_.
+- After that, re-run the failed Pages workflow (or merge any `develop` push) and confirm https://abuhasnat-cb.github.io/portfolio/
 
 ## Status
 
-`configure-pages` `enablement: true` failed with _Resource not accessible by integration_. Owner set Pages Source = GitHub Actions. Redeploy triggered via merge to `develop` (workflow_dispatch / run-rerun also denied to the bot token).
+Pages Source enabled. Build job green; Deploy job fails on environment branch policy (`main` only). Bot cannot edit environment policies or re-run/dispatch workflows (403).
