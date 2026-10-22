@@ -24,6 +24,7 @@ const eslintConfig = [
       "playwright-report/**",
       "test-results/**",
       ".lighthouseci/**",
+      ".preview/**",
     ],
   },
 ];

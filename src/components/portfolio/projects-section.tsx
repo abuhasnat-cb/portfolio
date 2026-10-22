@@ -83,7 +83,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                 </p>
                 <div className="mt-auto pt-[18px]">
                   <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
+                    {project.visibleTags.map((tag) => (
                       <span key={tag} className="tag-pill">
                         {tag}
                       </span>

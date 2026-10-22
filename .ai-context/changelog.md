@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-22 — Concept-b-v9 UI polish
+
+- About: tech terms and stats in Geist Mono (neutral); section `01` keeps accent.
+- Experience: earlier work shows role title only (CodersBucket + Education unchanged).
+- Stack: no pills — plain mono, comma-separated; label grid so names never wrap under the index.
+- Projects: `visibleTags` on cards; full `tags` still feed JSON-LD / llms.txt / index.md; Simply Eloped live link.
+- Human/Agent: icon-only toggle with tooltips / aria-labels; equal height with Get in touch / Resume.
+- Smooth scroll with sticky-header offset; reduced-motion disables it; fluid type/spacing tokens; compact mobile header (40px targets).
+- Playwright coverage for heights, tooltips, 360/390 overflow, toggle, reduced motion. ADR 0009.
+
 ## 2026-10-22 — Pages deploy blocked by environment branch policy
 
 - After Pages Source = GitHub Actions, build succeeds but deploy fails: `github-pages` environment allows only `main`. Owner must allow `develop`.

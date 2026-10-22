@@ -49,6 +49,27 @@ describe("content schema", () => {
     }
   });
 
+  it("exposes Simply Eloped live URL and visibleTags subsets", () => {
+    const simply = content.projects.find((p) => p.slug === "simply-eloped");
+    expect(simply?.links[0]?.href).toBe("https://simplyeloped.com");
+    for (const project of content.projects) {
+      expect(project.visibleTags.length).toBeGreaterThanOrEqual(2);
+      expect(project.visibleTags.length).toBeLessThanOrEqual(5);
+      expect(project.tags.length).toBeGreaterThanOrEqual(
+        project.visibleTags.length,
+      );
+    }
+  });
+
+  it("keeps earlier work roles title-only (no detail lines)", () => {
+    const work = content.experience.earlier.filter((r) => r.kind === "work");
+    expect(work.map((r) => r.desc)).toEqual([
+      "Software Engineer",
+      "Front-end Developer (Contractual)",
+      "Trainee Software Engineer",
+    ]);
+  });
+
   it("hides resume when URL is empty", () => {
     expect(content.profile.resumeUrl).toBe("");
   });
@@ -64,6 +85,8 @@ describe("generated markdown artifacts", () => {
     expect(md).toContain("## Stack");
     expect(md).toContain("## Contact");
     expect(md).toContain("hasnat.ovee@gmail.com");
+    expect(md).toContain("simplyeloped.com");
+    expect(md).toMatch(/Tags:.*Laravel/);
     expect(md).not.toMatch(PHONE_PATTERN);
     // front matter
     expect(md.startsWith("---\n")).toBe(true);

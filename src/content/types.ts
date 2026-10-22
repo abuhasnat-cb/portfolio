@@ -72,7 +72,10 @@ export type Project = {
   type: string;
   desc: RichText;
   excerpt: string;
+  /** Full tag list for JSON-LD / llms.txt / index.md. */
   tags: string[];
+  /** Subset shown on project cards (3–5 key tags). */
+  visibleTags: string[];
   links: ProjectLink[];
   metaTitle: string;
   schemaType: "SoftwareApplication" | "CreativeWork";

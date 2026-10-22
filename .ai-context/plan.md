@@ -10,12 +10,13 @@
 - [x] Vitest + Playwright + Lighthouse CI + linkinator + GitHub Actions
 - [x] Agent context docs, PR template, README, MIT + chanhdai attribution
 - [x] Temporary GitHub Pages preview at `/portfolio` (env-driven base path, noindex)
+- [x] Concept-b-v9 UI (About mono, compact earlier roles, stack mono, visibleTags, icon toggle, fluid type/mobile header)
+- [x] Owner: **Environments → github-pages → Deployment branches** allow `develop`
 
 ## Next
 
 - [ ] Owner: enable branch protection on `develop` / `main` (require CI)
 - [x] Owner: **Settings → Pages → Source = GitHub Actions** (set; `configure-pages` enablement alone was denied by the integration)
-- [ ] Owner: **Environments → github-pages → Deployment branches** — allow `develop` (currently only `main`; deploy job is rejected otherwise)
 - [ ] Owner: Cloudflare Pages project → build `pnpm build`, output `out`, Node 22
 - [ ] Owner: set `profile.resumeUrl` to Google Drive share link when ready
 - [ ] Generate and host OG image; set `seo.ogImage`

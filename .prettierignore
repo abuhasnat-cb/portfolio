@@ -6,3 +6,4 @@ coverage
 .lighthouseci
 playwright-report
 test-results
+.preview

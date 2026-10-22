@@ -26,9 +26,9 @@ _Full-stack engineer working with domain-driven design and agent-first workflows
 
 ## About
 
-I design the architecture; coding agents write the code. Working AI-first with Cursor, Claude, MCP and multi-agent development, with code review of every agent-written change and end-to-end tests, I ship **~60–70%** faster without losing quality.
+I design the architecture; coding agents write the code. Working AI-first with **Cursor**, **Claude**, **MCP** and multi-agent development, with code review of every agent-written change and end-to-end tests, I ship **~60–70%** faster without losing quality.
 
-Over **3+ years** I've built web products for SaaS, marketplaces, EdTech and enterprise systems, including Alljobs by Teletalk with **700,000+** monthly users, ERP modules and government software, mostly with **React, Next.js, TypeScript, Node.js and Laravel**. Looking for Software Engineer (L2/L3) roles, in Bangladesh or remote.
+Over **3+ years** I've built web products for SaaS, marketplaces, EdTech and enterprise systems, including Alljobs by Teletalk with **700,000+** monthly users, ERP modules and government software, mostly with **React**, **Next.js**, **TypeScript**, **Node.js** and **Laravel**. Looking for Software Engineer (L2/L3) roles, in Bangladesh or remote.
 
 ## Work experience
 
@@ -45,9 +45,9 @@ Software Engineer · Full-stack · Oct 2025 — Present
 
 _since May 2023_
 
-- **SolutionSpin Limited** · Software Engineer · Alljobs by Teletalk (700,000+ monthly users), BRACNet ERP HRM with RBAC, JSTU accounting system, client meetings and product demos · May 2024 — Sep 2025
-- **Tech Solution Factory** · Front-end Developer (Contractual) · Smart Jute Information Software for the Ministry of Jute & Textile, Shippers' Council Bangladesh website · Dec 2023 — Mar 2024
-- **Ascent Group** · Trainee Software Engineer · Google Calendar two-way sync for Workfreeli · May 2023 — Dec 2023
+- **SolutionSpin Limited** · Software Engineer · May 2024 — Sep 2025
+- **Tech Solution Factory** · Front-end Developer (Contractual) · Dec 2023 — Mar 2024
+- **Ascent Group** · Trainee Software Engineer · May 2023 — Dec 2023
 - **North South University** · Education · BSc in Computer Science & Engineering · 2022
 
 ## Selected projects
@@ -59,6 +59,7 @@ Feature enhancements in Laravel, React.js and WordPress, A/B tests and Amplitude
 - **Excerpt:** Features, A/B tests and Amplitude event tracking for a US-based product, built with Laravel, React.js and WordPress.
 - **Company:** CodersBucket Limited
 - **Tags:** Laravel, React.js, WordPress, PHP, A/B testing, Amplitude, Event tracking, Analytics, Agile
+- **Live:** [Live](https://simplyeloped.com)
 
 ### GymCity
 
