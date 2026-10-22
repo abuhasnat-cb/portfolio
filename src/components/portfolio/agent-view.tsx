@@ -81,7 +81,7 @@ export function AgentView({ content }: { content: SiteContent }) {
 
   return (
     <div className="px-[var(--pad)] pb-6">
-      <div className="mdbar screen-line-bottom mx-[calc(-1*var(--pad))] flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-b border-[var(--line)] px-[var(--pad)] py-4 font-mono text-[11.5px] leading-normal text-[var(--faint)]">
+      <div className="mdbar screen-line-bottom mx-[calc(-1*var(--pad))] flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-b border-[var(--line)] px-[var(--pad)] py-4 font-mono text-[length:var(--text-min)] leading-normal text-[var(--faint)]">
         <span>
           <span className="text-[var(--fg)]">index.md</span>
           <span className="mx-2 opacity-60">·</span>
@@ -111,7 +111,7 @@ export function AgentView({ content }: { content: SiteContent }) {
         dangerouslySetInnerHTML={{ __html: html }}
       />
 
-      <div className="mt-7 border-t border-[var(--line)] pt-3 font-mono text-[11.5px] leading-relaxed text-[var(--faint)]">
+      <div className="mt-7 border-t border-[var(--line)] pt-3 font-mono text-[length:var(--text-min)] leading-relaxed text-[var(--faint)]">
         Same content as the Human view, generated from one source. Agents: fetch
         /index.md or /llms.txt.
       </div>

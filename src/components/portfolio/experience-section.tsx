@@ -17,8 +17,8 @@ export function ExperienceSection({ experience }: { experience: Experience }) {
         Experience
       </h2>
 
-      <div className="job screen-line-bottom grid grid-cols-[28px_1fr_auto] items-start gap-4 py-5 max-[600px]:grid-cols-[28px_1fr]">
-        <div className="badge cur relative grid size-7 place-items-center rounded-[7px] bg-[var(--fg)] font-mono text-[10px] font-medium text-[var(--bg)]">
+      <div className="job job-current screen-line-bottom grid grid-cols-[28px_1fr_auto] items-start gap-4 py-5 max-[600px]:grid-cols-[28px_1fr]">
+        <div className="badge cur relative grid size-7 place-items-center rounded-[7px] bg-[var(--fg)] font-mono text-[length:var(--text-min)] font-medium text-[var(--bg)]">
           {current.badge}
           <span
             className="absolute -top-[3px] -right-[3px] size-[9px] rounded-full border-2 border-[var(--bg)] bg-[var(--accent)]"
@@ -29,12 +29,15 @@ export function ExperienceSection({ experience }: { experience: Experience }) {
           <b className="inline text-lg leading-6 font-medium tracking-[-0.01em]">
             {current.org}
           </b>
-          <span className="now ml-2 inline-block translate-y-0.5 rounded bg-[var(--accent-soft)] px-[5px] py-[3px] align-[2px] font-mono text-[10px] font-medium tracking-[0.06em] text-[var(--accent)] uppercase">
+          <span className="now ml-2 inline-block translate-y-0.5 rounded bg-[var(--accent-soft)] px-[5px] py-[3px] align-[2px] font-mono text-[length:var(--text-min)] font-medium tracking-[0.06em] text-[var(--accent)] uppercase">
             Current
           </span>
           <span className="r mt-1 block text-sm text-[var(--muted)]">
             {current.role}
           </span>
+          <div className="job-date-mobile mt-1 font-mono text-[length:var(--text-min)] leading-5 whitespace-nowrap text-[var(--faint)] tabular-nums">
+            {current.dates}
+          </div>
           <ul className="impact mt-3.5 grid list-none gap-2">
             {current.impact.map((item, i) => (
               <li
@@ -46,12 +49,12 @@ export function ExperienceSection({ experience }: { experience: Experience }) {
             ))}
           </ul>
         </div>
-        <div className="d font-mono text-[13px] leading-6 whitespace-nowrap text-[var(--faint)] tabular-nums max-[600px]:col-start-2 max-[600px]:mt-[-10px] max-[600px]:justify-self-start max-[600px]:text-xs">
+        <div className="job-date-desktop font-mono text-[length:var(--text-min)] leading-6 whitespace-nowrap text-[var(--faint)] tabular-nums">
           {current.dates}
         </div>
       </div>
 
-      <div className="sub mx-[var(--pad)] mt-7 mb-1 font-mono text-[12.5px] leading-none text-[var(--faint)]">
+      <div className="sub mx-[var(--pad)] mt-7 mb-1 font-mono text-[length:var(--text-min)] leading-none text-[var(--faint)]">
         {earlierNote}
       </div>
 
@@ -61,7 +64,7 @@ export function ExperienceSection({ experience }: { experience: Experience }) {
             key={role.org}
             className="job grid grid-cols-[28px_1fr_auto] items-start gap-4 py-4 max-[600px]:grid-cols-[28px_1fr]"
           >
-            <div className="badge relative z-1 grid size-7 place-items-center rounded-[7px] bg-[var(--soft)] font-mono text-[10px] font-medium text-[var(--muted)] shadow-[inset_0_0_0_1px_var(--border)]">
+            <div className="badge relative z-1 grid size-7 place-items-center rounded-[7px] bg-[var(--soft)] font-mono text-[length:var(--text-min)] font-medium text-[var(--muted)] shadow-[inset_0_0_0_1px_var(--border)]">
               {role.badge}
             </div>
             <div>
@@ -71,8 +74,11 @@ export function ExperienceSection({ experience }: { experience: Experience }) {
               <span className="r mt-1 block text-sm text-[var(--muted)]">
                 {renderRichText(role.desc)}
               </span>
+              <div className="job-date-mobile mt-1 font-mono text-[length:var(--text-min)] leading-5 whitespace-nowrap text-[var(--faint)] tabular-nums">
+                {role.dates}
+              </div>
             </div>
-            <div className="d font-mono text-[13px] leading-6 whitespace-nowrap text-[var(--faint)] tabular-nums max-[600px]:col-start-2 max-[600px]:mt-[-10px] max-[600px]:justify-self-start max-[600px]:text-xs">
+            <div className="job-date-desktop font-mono text-[length:var(--text-min)] leading-6 whitespace-nowrap text-[var(--faint)] tabular-nums max-[600px]:hidden">
               {role.dates}
             </div>
           </div>

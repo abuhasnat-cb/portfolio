@@ -30,7 +30,16 @@ describe("content schema", () => {
     expect(content.skills.length).toBe(7);
     expect(content.experience.current.org).toBe("CodersBucket Limited");
     expect(content.education.institution).toBe("North South University");
-    expect(content.seo.canonical).toMatch(/^https:\/\//);
+    expect(content.seo.siteName).toBe("Abu Hasnat Ovee");
+    expect(content.seo.canonical).toBe("https://oveehasnat.com/");
+  });
+
+  it("keeps production canonical and siteName in JSON-LD WebSite", () => {
+    const ld = buildJsonLd(content);
+    const graph = ld["@graph"] as Array<Record<string, unknown>>;
+    const site = graph.find((n) => n["@type"] === "WebSite")!;
+    expect(site.name).toBe("Abu Hasnat Ovee");
+    expect(site.url).toBe("https://oveehasnat.com/");
   });
 
   it("has no phone numbers in content", () => {

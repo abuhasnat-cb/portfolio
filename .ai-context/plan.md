@@ -12,6 +12,7 @@
 - [x] Temporary GitHub Pages preview at `/portfolio` (env-driven base path, noindex)
 - [x] Concept-b-v9 UI (About mono, compact earlier roles, stack mono, visibleTags, icon toggle, fluid type/mobile header)
 - [x] Owner: **Environments → github-pages → Deployment branches** allow `develop`
+- [x] QA polish: favicons, contrast tokens, production canonical, mobile header/experience date, Email me parity
 
 ## Next
 

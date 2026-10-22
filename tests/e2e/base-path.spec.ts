@@ -29,6 +29,23 @@ test.describe("GitHub Pages base path (/portfolio)", () => {
     const mdLink = page.getByRole("link", { name: "/index.md" });
     await expect(mdLink).toHaveAttribute("href", "/portfolio/index.md");
 
+    // Favicons under base path
+    for (const path of [
+      "/portfolio/favicon.ico",
+      "/portfolio/icon.png",
+      "/portfolio/icon.svg",
+      "/portfolio/apple-touch-icon.png",
+    ]) {
+      const iconRes = await page.request.get(path);
+      expect(iconRes.status(), path).toBe(200);
+    }
+
+    // Canonical stays production even on the preview build
+    const canonical = await page
+      .locator('link[rel="canonical"]')
+      .getAttribute("href");
+    expect(canonical?.replace(/\/$/, "")).toBe("https://oveehasnat.com");
+
     expect(errors).toEqual([]);
   });
 

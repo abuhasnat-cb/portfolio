@@ -23,17 +23,20 @@ export function ContactSection({ profile }: { profile: Profile }) {
             </b>
             {profile.contact.note}
           </p>
-          <div className="mail mt-2 flex items-center gap-2 font-mono text-[12.5px] leading-none text-[var(--fg)]">
+          <div className="mail mt-2 flex items-center gap-2 font-mono text-[length:var(--text-min)] leading-none text-[var(--fg)]">
             <span>{profile.email}</span>
             <CopyButton getText={() => profile.email} idleLabel="Copy email" />
           </div>
         </div>
-        <a className="btn-primary" href={`mailto:${profile.email}`}>
+        <a
+          className="btn-primary header-control"
+          href={`mailto:${profile.email}`}
+        >
           Email me
         </a>
       </div>
 
-      <div className="links mt-5! flex flex-wrap gap-x-[22px] gap-y-1.5 text-[13px] text-[var(--muted)]">
+      <div className="links mt-5! flex flex-wrap gap-x-[22px] gap-y-1.5 text-[length:var(--text-min)] text-[var(--muted)]">
         {profile.links.map((link) => (
           <a
             key={link.href}

@@ -4,20 +4,23 @@ import { GeistMono } from "geist/font/mono";
 import { content } from "@/content";
 import { JsonLd } from "@/components/json-ld";
 import { ThemeProvider } from "@/components/theme-provider";
-import { isPreviewDeploy } from "@/lib/site-env";
+import { getSiteUrl, isPreviewDeploy } from "@/lib/site-env";
 import "./globals.css";
 
 const { seo, profile } = content;
 const preview = isPreviewDeploy();
+/** Deploy origin (may be GitHub Pages); used to resolve icons/manifest. */
+const deployOrigin = `${getSiteUrl()}/`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`${profile.url}/`),
+  metadataBase: new URL(deployOrigin),
   title: {
     default: seo.title,
-    template: `%s | ${profile.name}`,
+    template: `%s | ${seo.siteName}`,
   },
   description: seo.description,
-  authors: [{ name: profile.name, url: profile.url }],
+  applicationName: seo.siteName,
+  authors: [{ name: profile.name, url: seo.canonical }],
   creator: profile.name,
   keywords: seo.keywords,
   robots: preview
@@ -33,15 +36,25 @@ export const metadata: Metadata = {
         },
       },
   alternates: {
+    // Always the production domain, including on the noindex Pages preview.
     canonical: seo.canonical,
     types: {
       "text/markdown": [{ url: "index.md", title: "Markdown version" }],
       "text/plain": [{ url: "llms.txt", title: "llms.txt" }],
     },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "profile",
-    siteName: profile.name,
+    siteName: seo.siteName,
     locale: seo.locale,
     title: seo.title,
     description:

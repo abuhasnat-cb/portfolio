@@ -24,7 +24,8 @@ export const content: SiteContent = {
   education,
   seo: {
     ...baseSeo,
-    canonical: `${siteUrl}/`,
+    // Canonical / og:url stay on the production domain even for Pages preview.
+    canonical: baseSeo.canonical,
     robots: preview ? "noindex, nofollow" : baseSeo.robots,
   },
 };
