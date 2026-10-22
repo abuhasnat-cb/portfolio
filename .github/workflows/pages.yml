@@ -44,6 +44,10 @@ jobs:
           grep -q 'abuhasnat-cb.github.io/portfolio' out/index.md
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          # Attempt to create/enable the Pages site when it does not exist yet.
+          # If this still fails, the owner must set Settings → Pages → Source = GitHub Actions.
+          enablement: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

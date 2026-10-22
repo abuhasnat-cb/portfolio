@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-22 — Pages workflow enablement
+
+- Set `actions/configure-pages` `enablement: true` so the first deploy can create the Pages site when the API allows it.
+
 ## 2026-10-22 — GitHub Pages preview (/portfolio)
 
 - Env-driven `NEXT_PUBLIC_BASE_PATH` and `SITE_URL` (defaults: root + `https://oveehasnat.com`).
