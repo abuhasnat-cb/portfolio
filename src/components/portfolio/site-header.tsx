@@ -21,32 +21,39 @@ export function SiteHeader({
   const showResume = Boolean(profile.resumeUrl);
 
   return (
-    <header className="top screen-line-top screen-line-bottom strong fx sticky top-0 z-20 flex min-h-[60px] flex-wrap items-center justify-between gap-x-4 gap-y-3.5 bg-[var(--bg)] px-[var(--pad)] py-3 [--i:0]">
-      <div className="flex items-center gap-3">
+    <header className="top screen-line-top screen-line-bottom strong fx sticky top-0 z-[60] flex min-h-[var(--header-h)] flex-nowrap items-center justify-between gap-2 bg-[var(--bg)] px-[var(--pad)] py-2.5 [--i:0] sm:gap-3 sm:py-3">
+      <div className="flex shrink-0 items-center gap-3">
         <AoMark initials={profile.initials} />
       </div>
 
       <ModeToggle mode={mode} onChange={onModeChange} />
 
       <nav
-        className="actions flex items-center gap-2 max-[600px]:order-3 max-[600px]:w-full"
+        className="actions flex shrink-0 items-center gap-1.5 sm:gap-2"
         aria-label="Primary"
       >
-        <div className="max-[600px]:ml-auto">
-          <ThemeToggle />
-        </div>
-        <a className="cta-link" href="#contact" onClick={onContactClick}>
-          Get in touch
+        <ThemeToggle />
+        <a
+          className="cta-link header-control"
+          href="#contact"
+          aria-label="Get in touch"
+          onClick={onContactClick}
+        >
+          <span className="header-label-full">Get in touch</span>
+          <span className="header-label-compact" aria-hidden="true">
+            Contact
+          </span>
         </a>
         {showResume ? (
           <a
-            className="btn-primary"
+            className="btn-primary header-control"
             href={profile.resumeUrl}
+            aria-label="Resume"
             title="Resume"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Resume
+            <span className="header-label-full">Resume</span>
             <svg
               className="size-3"
               viewBox="0 0 24 24"
@@ -57,8 +64,9 @@ export function SiteHeader({
               strokeLinejoin="round"
               aria-hidden="true"
             >
-              <path d="M7 7h10v10" />
-              <path d="M7 17 17 7" />
+              <path d="M12 4v12" />
+              <path d="m7 11 5 5 5-5" />
+              <path d="M5 20h14" />
             </svg>
           </a>
         ) : null}

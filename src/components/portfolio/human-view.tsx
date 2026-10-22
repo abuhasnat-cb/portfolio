@@ -11,9 +11,9 @@ export function HumanView({ content }: { content: SiteContent }) {
 
   return (
     <div>
-      <h1 className="hero dots screen-line-bottom fx m-0 max-w-none px-[var(--pad)] pt-[84px] pb-3.5 font-sans text-[32px] leading-[1.15] font-medium tracking-[-0.025em] [--i:1] max-[600px]:pt-14 max-[600px]:text-[26px]">
+      <h1 className="hero dots screen-line-bottom fx m-0 max-w-none px-[var(--pad)] pt-[clamp(3.5rem,3rem+2vw,5.25rem)] pb-3.5 font-sans text-[length:var(--text-hero)] leading-[1.15] font-medium tracking-[-0.025em] [--i:1]">
         {profile.name}
-        <span className="relative mt-3.5 ml-[calc(-1*var(--pad))] block px-[var(--pad)] pt-2.5 font-mono text-[13px] leading-relaxed font-normal tracking-normal text-[var(--muted)] before:absolute before:top-0 before:right-0 before:left-0 before:h-px before:bg-[var(--line)] before:content-['']">
+        <span className="relative mt-3.5 ml-[calc(-1*var(--pad))] block px-[var(--pad)] pt-2.5 font-mono text-[length:var(--text-mono)] leading-relaxed font-normal tracking-normal text-[var(--muted)] before:absolute before:top-0 before:right-0 before:left-0 before:h-px before:bg-[var(--line)] before:content-['']">
           {profile.tagline}
         </span>
       </h1>

@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Fonts & accent: edit these tokens in one place.
+   Design tokens — edit in one place.
    --font-sans / --font-mono come from the geist package in layout.
-   Accent covers ~10% of the UI (status dot, Resume, link hovers, key numbers).
-   About section numbers stay neutral (no accent).
+   Accent covers ~10% of the UI (status, Resume, section indexes, bullets).
+   About highlights stay neutral Geist Mono (no accent).
    ============================================================ */
 :root {
   --accent: #3047c8; /* Cobalt — light */
@@ -20,9 +20,20 @@
   --on-accent: #ffffff;
   --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
   --accent-line: color-mix(in srgb, var(--accent) 35%, transparent);
-  --pad: 20px;
-  --sep: 40px;
+
+  /* Fluid spacing + type */
+  --pad: clamp(1rem, 0.75rem + 1.2vw, 1.25rem);
+  --sep: clamp(2rem, 1.5rem + 2vw, 2.5rem);
   --col: 768px;
+  --header-h: 3.75rem;
+  --header-control-h: 2rem; /* 32px — matches mockup control row */
+  --text-body: clamp(0.9375rem, 0.9rem + 0.2vw, 0.96875rem);
+  --text-hero: clamp(1.625rem, 1.35rem + 1.2vw, 2rem);
+  --text-section: clamp(1.5rem, 1.3rem + 0.9vw, 1.75rem);
+  --text-mono: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+  --text-tag: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);
+  --leading-body: 1.7;
+  --scroll-offset: calc(var(--header-h) + 0.5rem);
 }
 
 .dark {
@@ -62,6 +73,8 @@
 
 html {
   color-scheme: light;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--scroll-offset);
 }
 
 html.dark {
@@ -77,7 +90,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -109,6 +122,16 @@ button {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 6px;
+}
+
+#about,
+#experience,
+#projects,
+#stack,
+#contact,
+[id^="md-"],
+[id^="p-"] {
+  scroll-margin-top: var(--scroll-offset);
 }
 
 /* ---------- motion ---------- */
@@ -157,6 +180,10 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .fx,
   .live-dot,
   .card-reveal {
@@ -165,6 +192,8 @@ button {
 
   .stage,
   .modes-pill,
+  .modes-pill::before,
+  .modes-btn .tip,
   .pmore,
   .pmore svg,
   .btn-primary,
@@ -269,13 +298,20 @@ button {
   font-feature-settings: "tnum";
 }
 
-/* About: no accent on numbers */
+/* About: Geist Mono highlights, neutral (no accent). Section index keeps accent. */
+.about-section strong,
 .about-section .rt-num {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  font-weight: 400;
   color: var(--fg);
+  white-space: nowrap;
+  font-feature-settings: "tnum";
 }
 
-.about-section h2 .section-index {
-  color: var(--muted) !important;
+.about-section p {
+  line-height: var(--leading-body);
+  max-width: 62ch;
 }
 
 .stage {
@@ -286,14 +322,34 @@ button {
   opacity: 0;
 }
 
+/* ---------- header controls (equal height with modes pill) ---------- */
+.header-control {
+  box-sizing: border-box;
+  height: var(--header-control-h);
+  min-height: var(--header-control-h);
+  padding-top: 0;
+  padding-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-label-compact {
+  display: none;
+}
+
 .modes-pill {
   position: relative;
+  z-index: 2;
   display: inline-grid;
   grid-template-columns: 1fr 1fr;
   flex: none;
+  box-sizing: border-box;
+  height: var(--header-control-h);
+  min-height: var(--header-control-h);
   padding: 2px;
   border: 1px solid var(--line);
   border-radius: 999px;
+  align-items: stretch;
 }
 
 .modes-pill::before {
@@ -311,6 +367,75 @@ button {
 
 .modes-pill[data-mode="agent"]::before {
   transform: translateX(100%);
+}
+
+.modes-btn {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--faint);
+  transition: color 0.2s;
+}
+
+.modes-btn:hover {
+  color: var(--fg);
+}
+
+.modes-btn[aria-checked="true"] {
+  color: var(--accent);
+}
+
+.modes-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.modes-btn .tip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translate(-50%, -3px);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--bg);
+  background: var(--fg);
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
+  z-index: 50;
+}
+
+.modes-btn:hover .tip,
+.modes-btn:focus-visible .tip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.modes-btn[data-mode="agent"] .tip {
+  left: auto;
+  right: 0;
+  transform: translateY(-3px);
+}
+
+.modes-btn[data-mode="agent"]:hover .tip,
+.modes-btn[data-mode="agent"]:focus-visible .tip {
+  transform: none;
+}
+
+.modes-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .section-panel {
@@ -331,7 +456,7 @@ button {
   margin: 0 0 4px;
   padding: 14px var(--pad) 12px;
   font-family: var(--font-sans);
-  font-size: 28px;
+  font-size: var(--text-section);
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.025em;
@@ -374,7 +499,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
+  padding: 0 14px;
   border: 1px solid var(--accent);
   border-radius: 999px;
   background: var(--accent);
@@ -396,7 +521,7 @@ button {
 }
 
 .cta-link {
-  padding: 8px 14px;
+  padding: 0 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 13px;
@@ -422,7 +547,7 @@ button {
   box-shadow: inset 0 0 0 1px var(--border);
   color: var(--fg);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--text-tag);
   font-weight: 400;
   line-height: 1;
 }
@@ -474,6 +599,39 @@ button {
 
 .pmore[aria-expanded="true"] svg {
   transform: rotate(180deg);
+}
+
+/* Stack: number + label column (never wraps under index) */
+.stack-list {
+  counter-reset: cat;
+}
+
+.stack-label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: start;
+  counter-increment: cat;
+}
+
+.stack-index {
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: color-mix(in srgb, var(--muted) 80%, transparent);
+}
+
+.stack-index::before {
+  content: counter(cat, decimal-leading-zero);
+}
+
+.stack-name {
+  min-width: 0;
+}
+
+.stack-items {
+  word-spacing: 0.08em;
 }
 
 /* Agent markdown view */
@@ -552,18 +710,15 @@ a.t-link:hover .t-lt {
   text-underline-offset: 3px;
 }
 
-@media (max-width: 600px) {
+/* Mobile: touch-friendly 40px controls; compact labels; no header wrap */
+@media (max-width: 640px) {
   :root {
-    --pad: 16px;
-    --sep: 32px;
+    --header-control-h: 2.5rem; /* 40px touch target */
+    --leading-body: 1.75;
   }
 
   .col-wrap {
     border-inline: 0;
-  }
-
-  .section-title {
-    font-size: 24px;
   }
 
   .md-line {
@@ -572,5 +727,30 @@ a.t-link:hover .t-lt {
 
   .md-line::before {
     display: none;
+  }
+
+  .cta-link,
+  .btn-primary {
+    font-size: 12px;
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .header-label-full {
+    display: none;
+  }
+
+  .header-label-compact {
+    display: inline;
+  }
+
+  .cta-link,
+  .btn-primary {
+    padding-inline: 10px;
+  }
+
+  .modes-btn {
+    padding-inline: 8px;
   }
 }

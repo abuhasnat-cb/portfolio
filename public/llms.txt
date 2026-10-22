@@ -13,7 +13,7 @@ Contact: hasnat.ovee@gmail.com. Last updated: 2026-10-22.
 
 ## Projects
 
-- [Simply Eloped](https://oveehasnat.com/index.md#simply-eloped): Feature enhancements in Laravel, React.js and WordPress, A/B tests and Amplitude event tracking for Simply Eloped, a US-based product, shipped in Agile sprints with the US team. Tags: Laravel, React.js, WordPress, PHP, A/B testing, Amplitude, Event tracking, Analytics, Agile
+- [Simply Eloped](https://simplyeloped.com): Feature enhancements in Laravel, React.js and WordPress, A/B tests and Amplitude event tracking for Simply Eloped, a US-based product, shipped in Agile sprints with the US team. Tags: Laravel, React.js, WordPress, PHP, A/B testing, Amplitude, Event tracking, Analytics, Agile
 - [GymCity](https://app.gymcity.com/): Gym marketplace built with Next.js and Laravel: gym profiles, a booking flow and role-based dashboards, with biometric attendance automated across multiple gyms and branches. Tags: Next.js, React.js, TypeScript, Laravel, PHP, Marketplace, Booking, RBAC, Biometric attendance
 - [Ryogen AI](https://ryogen.ai/): Bootcamp platform for Ryogen AI with student enrollment, OAuth authentication, payment flows and LLM-based AI tools for learners. Tags: EdTech, OAuth 2.0, Authentication, LLM, AI tools, Payments, Enrollment
 - [CB Agent](https://oveehasnat.com/index.md#cb-agent): Internal knowledge AI agent built with RAG, n8n, a Qdrant vector database and Google Gemini. It answers questions in Slack and is used company-wide by all employees. Tags: RAG, n8n, Qdrant, Vector database, Google Gemini, LLM, Slack integration, AI agent
