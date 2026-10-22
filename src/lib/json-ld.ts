@@ -3,7 +3,8 @@ import { richToPlain } from "./rich-text-parse";
 
 export function buildJsonLd(content: SiteContent) {
   const { profile, experience, projects, education, skills, seo } = content;
-  const base = profile.url.replace(/\/$/, "");
+  // Structured data always points at the production canonical, even on preview.
+  const base = seo.canonical.replace(/\/$/, "");
   const personId = `${base}/#person`;
   const websiteId = `${base}/#website`;
   const profilePageId = `${base}/#profilepage`;
@@ -76,7 +77,7 @@ export function buildJsonLd(content: SiteContent) {
       "@type": "WebSite",
       "@id": websiteId,
       url: `${base}/`,
-      name: profile.name,
+      name: seo.siteName,
       inLanguage: "en",
       publisher: { "@id": personId },
     },

@@ -7,3 +7,6 @@ coverage
 playwright-report
 test-results
 .preview
+public/*.ico
+public/*.png
+public/*.svg

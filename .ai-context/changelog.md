@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-22 — QA polish (tokens, favicon, canonical)
+
+- Email me matches header primary control geometry.
+- Type scale floor 13px; body 15px; muted/faint contrast ≥4.5:1 (light + dark).
+- Mobile header icon-only below 420px; current experience date under role on small screens.
+- AO favicon set (ico / 32png / svg / apple-touch); AO aria-label “Abu Hasnat Ovee, home”.
+- `seo.siteName` SSOT; canonical + og:url always `https://oveehasnat.com/` (preview stays noindex).
+- E2E: no console/404 on load, header 360/400, axe AA; unit contrast test. ADR 0010.
+
 ## 2026-10-22 — Concept-b-v9 UI polish
 
 - About: tech terms and stats in Geist Mono (neutral); section `01` keeps accent.

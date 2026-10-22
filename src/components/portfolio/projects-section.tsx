@@ -64,7 +64,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                       {project.name}
                     </b>
                   </h3>
-                  <div className="flex gap-3 font-mono text-[11.5px] leading-none whitespace-nowrap text-[var(--muted)]">
+                  <div className="flex gap-3 font-mono text-[length:var(--text-min)] leading-none whitespace-nowrap text-[var(--muted)]">
                     {project.links.map((link) => (
                       <a
                         key={link.href}

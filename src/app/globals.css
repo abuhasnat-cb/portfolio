@@ -15,23 +15,25 @@
   --line: color-mix(in oklab, var(--border) 64%, var(--bg));
   --hatch: color-mix(in oklab, var(--line) 56%, transparent);
   --fg: #111113;
-  --muted: #66666c;
-  --faint: #8e8e94;
+  /* WCAG AA ≥4.5:1 on white (was #8e8e94 ≈3.25:1) */
+  --muted: #6b6b70;
+  --faint: #6b6b70;
   --on-accent: #ffffff;
   --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
   --accent-line: color-mix(in srgb, var(--accent) 35%, transparent);
 
-  /* Fluid spacing + type */
+  /* Fluid spacing + type (desktop floor: 13px) */
   --pad: clamp(1rem, 0.75rem + 1.2vw, 1.25rem);
   --sep: clamp(2rem, 1.5rem + 2vw, 2.5rem);
   --col: 768px;
   --header-h: 3.75rem;
-  --header-control-h: 2rem; /* 32px — matches mockup control row */
-  --text-body: clamp(0.9375rem, 0.9rem + 0.2vw, 0.96875rem);
+  --header-control-h: 2rem; /* 32px — matches header CTA row */
+  --text-min: 0.8125rem; /* 13px floor */
+  --text-body: max(var(--text-min), 0.9375rem); /* 15px */
   --text-hero: clamp(1.625rem, 1.35rem + 1.2vw, 2rem);
   --text-section: clamp(1.5rem, 1.3rem + 0.9vw, 1.75rem);
-  --text-mono: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
-  --text-tag: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);
+  --text-mono: max(var(--text-min), 0.8125rem);
+  --text-tag: max(var(--text-min), 0.8125rem);
   --leading-body: 1.7;
   --scroll-offset: calc(var(--header-h) + 0.5rem);
 }
@@ -43,8 +45,8 @@
   --border: #27272a;
   --line: #1e1e21;
   --fg: #ececee;
-  --muted: #a0a0a8;
-  --faint: #76767e;
+  --muted: #a0a0a8; /* ≥4.5:1 on #09090b */
+  --faint: #9a9aa3; /* ≥4.5:1 on #09090b (was #76767e ≈4.42) */
   --on-accent: #0b0b0c;
   --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
   --accent-line: color-mix(in srgb, var(--accent) 35%, transparent);
@@ -403,7 +405,7 @@ button {
   pointer-events: none;
   opacity: 0;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-min);
   font-weight: 400;
   line-height: 1;
   color: var(--bg);
@@ -466,12 +468,21 @@ button {
 
 .section-title .section-index {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: var(--text-min);
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0;
   color: var(--accent);
   transform: translateY(-3px);
+}
+
+/* Experience dates: beside on desktop; under role on mobile */
+.job-date-mobile {
+  display: none;
+}
+
+.job-date-desktop {
+  display: block;
 }
 
 .section-title::after {
@@ -617,7 +628,7 @@ button {
 .stack-index {
   white-space: nowrap;
   font-family: var(--font-mono);
-  font-size: 0.875rem;
+  font-size: var(--text-min);
   line-height: 1.5rem;
   color: color-mix(in srgb, var(--muted) 80%, transparent);
 }
@@ -657,7 +668,7 @@ button {
   opacity: 0.55;
   text-align: right;
   padding-right: 14px;
-  font-size: 11px;
+  font-size: var(--text-min);
   user-select: none;
 }
 
@@ -710,7 +721,12 @@ a.t-link:hover .t-lt {
   text-underline-offset: 3px;
 }
 
-/* Mobile: touch-friendly 40px controls; compact labels; no header wrap */
+.header-label-short,
+.header-label-icon {
+  display: none;
+}
+
+/* Mobile: touch-friendly 40px controls; date under role; no header wrap */
 @media (max-width: 640px) {
   :root {
     --header-control-h: 2.5rem; /* 40px touch target */
@@ -731,23 +747,56 @@ a.t-link:hover .t-lt {
 
   .cta-link,
   .btn-primary {
-    font-size: 12px;
+    font-size: var(--text-min);
     padding-inline: 12px;
+  }
+
+  .job-date-mobile {
+    display: block;
+  }
+
+  .job-date-desktop {
+    display: none;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 640px) and (min-width: 421px) {
   .header-label-full {
     display: none;
   }
 
-  .header-label-compact {
+  .header-label-short {
     display: inline;
   }
+}
 
-  .cta-link,
-  .btn-primary {
-    padding-inline: 10px;
+/* Narrow phones: icon-only contact/resume to avoid squeeze */
+@media (max-width: 420px) {
+  .header-label-full,
+  .header-label-short {
+    display: none;
+  }
+
+  .header-contact {
+    width: var(--header-control-h);
+    min-width: var(--header-control-h);
+    padding-inline: 0;
+    justify-content: center;
+  }
+
+  .header-contact .header-label-icon {
+    display: block;
+  }
+
+  .header-resume {
+    width: var(--header-control-h);
+    min-width: var(--header-control-h);
+    padding-inline: 0;
+    justify-content: center;
+  }
+
+  .header-resume .header-label-full {
+    display: none;
   }
 
   .modes-btn {

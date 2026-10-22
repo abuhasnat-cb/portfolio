@@ -40,7 +40,7 @@ export function CopyButton({
     <button
       type="button"
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-md border border-[var(--line)] bg-[var(--bg)] px-1.5 py-1 font-mono text-[11px] leading-none text-[var(--muted)] transition-[color,border-color] duration-200 hover:border-[var(--accent-line)] hover:text-[var(--accent)]",
+        "inline-flex items-center gap-1.5 rounded-md border border-[var(--line)] bg-[var(--bg)] px-1.5 py-1 font-mono text-[length:var(--text-min)] leading-none text-[var(--muted)] transition-[color,border-color] duration-200 hover:border-[var(--accent-line)] hover:text-[var(--accent)]",
         done && "border-[var(--accent-line)] text-[var(--accent)]",
         className,
       )}

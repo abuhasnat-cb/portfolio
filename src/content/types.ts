@@ -94,9 +94,12 @@ export type Education = {
 };
 
 export type Seo = {
+  /** Brand / site name used in title template, OG, JSON-LD, manifest. */
+  siteName: string;
   title: string;
   description: string;
   keywords: string[];
+  /** Always the production origin (https://oveehasnat.com/), even on preview. */
   canonical: string;
   ogImage: string | null;
   locale: string;

@@ -54,7 +54,7 @@ export function HumanView({ content }: { content: SiteContent }) {
 
       <div className="hatch-sep screen-line-bottom" aria-hidden="true" />
 
-      <footer className="fx flex justify-between px-[var(--pad)] py-5 font-mono text-[12.5px] leading-none text-[var(--faint)] [--i:8]">
+      <footer className="fx flex justify-between px-[var(--pad)] py-5 font-mono text-[length:var(--text-min)] leading-none text-[var(--faint)] [--i:8]">
         <span>{profile.site}</span>
         <span>Dhaka · {profile.timezoneLabel}</span>
       </footer>

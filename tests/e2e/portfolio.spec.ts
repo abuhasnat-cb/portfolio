@@ -1,11 +1,21 @@
+import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 test.describe("portfolio", () => {
-  test("renders hero and key sections", async ({ page }) => {
+  test("renders hero and key sections without console errors or 404s", async ({
+    page,
+  }) => {
     const errors: string[] = [];
+    const failed: string[] = [];
     page.on("pageerror", (err) => errors.push(err.message));
     page.on("console", (msg) => {
       if (msg.type() === "error") errors.push(msg.text());
+    });
+    page.on("response", (res) => {
+      const url = res.url();
+      if (res.status() === 404 && !url.includes("chrome-extension")) {
+        failed.push(`${res.status()} ${url}`);
+      }
     });
 
     await page.goto("/");
@@ -27,10 +37,26 @@ test.describe("portfolio", () => {
       page.getByRole("heading", { name: "Contact", exact: true }),
     ).toBeVisible();
 
+    await expect(
+      page.getByRole("link", { name: "Abu Hasnat Ovee, home" }),
+    ).toBeVisible();
+
+    // Favicons resolve on this origin
+    for (const path of [
+      "/favicon.ico",
+      "/icon.png",
+      "/icon.svg",
+      "/apple-touch-icon.png",
+    ]) {
+      const res = await page.request.get(path);
+      expect(res.status(), path).toBe(200);
+    }
+
     // Resume hidden while URL empty
     await expect(page.getByRole("link", { name: /Resume/i })).toHaveCount(0);
 
-    expect(errors).toEqual([]);
+    expect(errors, `console errors: ${errors.join("; ")}`).toEqual([]);
+    expect(failed, `404s: ${failed.join("; ")}`).toEqual([]);
   });
 
   test("theme toggle switches class on html", async ({ page }) => {
@@ -116,27 +142,111 @@ test.describe("portfolio", () => {
     expect(heights!.modes).toBeGreaterThanOrEqual(32);
   });
 
-  test("no horizontal overflow at 360px and 390px", async ({ page }) => {
-    for (const width of [360, 390] as const) {
+  test("no horizontal overflow; comfortable header at 360 and 400px", async ({
+    page,
+  }) => {
+    for (const width of [360, 390, 400] as const) {
       await page.setViewportSize({ width, height: 844 });
       await page.goto("/");
-      const overflow = await page.evaluate(() => {
+      const metrics = await page.evaluate(() => {
         const doc = document.documentElement;
         const header = document.querySelector("header.top");
+        const modes = document.querySelector(".modes-pill");
+        const contact = document.querySelector("a.header-contact");
         return {
           scrollWidth: doc.scrollWidth,
           clientWidth: doc.clientWidth,
           headerWraps: header
             ? getComputedStyle(header).flexWrap === "wrap"
             : true,
+          modesH: modes ? Math.round(modes.getBoundingClientRect().height) : 0,
+          contactH: contact
+            ? Math.round(contact.getBoundingClientRect().height)
+            : 0,
+          contactW: contact
+            ? Math.round(contact.getBoundingClientRect().width)
+            : 0,
         };
       });
-      expect(
-        overflow.scrollWidth,
-        `overflow at ${width}px`,
-      ).toBeLessThanOrEqual(overflow.clientWidth + 1);
-      expect(overflow.headerWraps, `header wrap at ${width}px`).toBe(false);
+      expect(metrics.scrollWidth, `overflow at ${width}px`).toBeLessThanOrEqual(
+        metrics.clientWidth + 1,
+      );
+      expect(metrics.headerWraps, `header wrap at ${width}px`).toBe(false);
+      expect(metrics.modesH).toBe(metrics.contactH);
+      expect(metrics.contactH).toBeGreaterThanOrEqual(40);
+      // Icon-only contact below 420px should not be a squeezed text pill
+      if (width <= 400) {
+        expect(metrics.contactW).toBeGreaterThanOrEqual(40);
+        expect(metrics.contactW).toBeLessThanOrEqual(56);
+      }
     }
+  });
+
+  test("Email me matches header primary button geometry", async ({ page }) => {
+    await page.goto("/");
+    const sizes = await page.evaluate(() => {
+      const email = document.querySelector("#contact a.btn-primary");
+      const contact = document.querySelector("a.cta-link.header-control");
+      if (!email || !contact) return null;
+      const e = getComputedStyle(email);
+      const c = getComputedStyle(contact);
+      return {
+        emailH: Math.round(email.getBoundingClientRect().height),
+        contactH: Math.round(contact.getBoundingClientRect().height),
+        emailRadius: e.borderRadius,
+        contactRadius: c.borderRadius,
+      };
+    });
+    expect(sizes).not.toBeNull();
+    expect(sizes!.emailH).toBe(sizes!.contactH);
+    expect(sizes!.emailRadius).toBe(sizes!.contactRadius);
+  });
+
+  test("mobile current experience date sits under the role", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/");
+    const order = await page.evaluate(() => {
+      const job = document.querySelector(".job-current");
+      if (!job) return null;
+      const role = job.querySelector(".r");
+      const mobileDate = job.querySelector(".job-date-mobile");
+      const impact = job.querySelector(".impact");
+      if (!role || !mobileDate || !impact) return null;
+      const roleTop = role.getBoundingClientRect().top;
+      const dateTop = mobileDate.getBoundingClientRect().top;
+      const impactTop = impact.getBoundingClientRect().top;
+      return {
+        dateAfterRole: dateTop >= roleTop - 1,
+        dateBeforeImpact: dateTop <= impactTop + 1,
+        mobileVisible: getComputedStyle(mobileDate).display !== "none",
+      };
+    });
+    expect(order).not.toBeNull();
+    expect(order!.mobileVisible).toBe(true);
+    expect(order!.dateAfterRole).toBe(true);
+    expect(order!.dateBeforeImpact).toBe(true);
+  });
+
+  test("axe: no serious or critical violations on home", async ({ page }) => {
+    // Avoid mid-animation opacity skewing contrast samples.
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/");
+    await page.waitForTimeout(300);
+    const results = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa"])
+      .disableRules(["scrollable-region-focusable"])
+      .analyze();
+    const serious = results.violations.filter(
+      (v) => v.impact === "serious" || v.impact === "critical",
+    );
+    expect(
+      serious,
+      serious
+        .map((v) => `${v.id}: ${v.help} :: ${v.nodes[0]?.failureSummary ?? ""}`)
+        .join("\n"),
+    ).toEqual([]);
   });
 
   test("reduced motion skips fade when switching modes", async ({ page }) => {
