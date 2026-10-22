@@ -49,12 +49,31 @@ Feature branch off `develop` → PR into `develop` → merge when CI is green �
 
 Agents: read [`AGENTS.md`](AGENTS.md) and [`.ai-context/README.md`](.ai-context/README.md) first.
 
-## Cloudflare Pages
+## Preview (GitHub Pages)
+
+Temporary preview (until Cloudflare production is live):
+
+- URL: https://abuhasnat-cb.github.io/portfolio/
+- Deployed on every push to `develop` by `.github/workflows/pages.yml`
+- Build uses `NEXT_PUBLIC_BASE_PATH=/portfolio` and `SITE_URL=https://abuhasnat-cb.github.io/portfolio`
+- Marked **noindex** so it does not compete with `oveehasnat.com`
+
+Owner must set **Settings → Pages → Source = GitHub Actions** once.
+
+Local check:
+
+```bash
+pnpm build:pages
+node scripts/prepare-pages-preview.mjs
+pnpm test:e2e:pages
+```
+
+## Cloudflare Pages (production)
 
 1. Connect this GitHub repo.
-2. Build command: `pnpm build` (or `npx pnpm build` if needed).
+2. Build command: `pnpm build` (leave `NEXT_PUBLIC_BASE_PATH` / `SITE_URL` unset).
 3. Output directory: `out`.
-4. Root directory: `/` (default).
+4. Node version: `22`.
 5. Later: attach custom domain `oveehasnat.com`.
 
 ## License

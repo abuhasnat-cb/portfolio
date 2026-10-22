@@ -194,8 +194,16 @@ ${body}
 `;
 }
 
-export function toRobotsTxt(content: SiteContent): string {
+export function toRobotsTxt(
+  content: SiteContent,
+  options?: { preview?: boolean },
+): string {
   const base = content.profile.url.replace(/\/$/, "");
+  if (options?.preview) {
+    return `User-agent: *
+Disallow: /
+`;
+  }
   return `User-agent: *
 Allow: /
 

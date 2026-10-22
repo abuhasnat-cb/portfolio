@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import type { SiteContent } from "@/content";
 import { toMarkdown } from "@/lib/markdown";
+import { withBasePath } from "@/lib/site-env";
 import { slugifyHeading } from "@/lib/utils";
 import { CopyButton } from "./copy-button";
 
@@ -87,14 +88,14 @@ export function AgentView({ content }: { content: SiteContent }) {
           Also at{" "}
           <a
             className="underline decoration-[var(--line)] underline-offset-[3px] transition-colors duration-200 hover:text-[var(--accent)]"
-            href="/index.md"
+            href={withBasePath("/index.md")}
           >
             /index.md
           </a>{" "}
           and{" "}
           <a
             className="underline decoration-[var(--line)] underline-offset-[3px] transition-colors duration-200 hover:text-[var(--accent)]"
-            href="/llms.txt"
+            href={withBasePath("/llms.txt")}
           >
             /llms.txt
           </a>

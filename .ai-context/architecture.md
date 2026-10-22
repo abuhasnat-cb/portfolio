@@ -43,7 +43,11 @@ src/
 
 ## Hosting
 
-Cloudflare Pages serves the `out/` directory (build command: `pnpm build`, output directory: `out`). No Node server. Trailing slashes enabled for Pages-friendly paths.
+**Production (default):** Cloudflare Pages serves `out/` with build `pnpm build`, output `out`, Node 22. No Node server. Trailing slashes enabled. Env unset → site at domain root, `https://oveehasnat.com`.
+
+**Temporary preview:** On push to `develop`, `.github/workflows/pages.yml` builds with `NEXT_PUBLIC_BASE_PATH=/portfolio` and `SITE_URL=https://abuhasnat-cb.github.io/portfolio`, then deploys via GitHub Pages (`configure-pages` / `upload-pages-artifact` / `deploy-pages`). Preview is noindex. See ADR 0008.
+
+Site URL and base path are resolved in `src/lib/site-env.ts` and applied in `next.config.ts`, `src/content/index.ts`, generators, and layout metadata.
 
 ## Testing layers
 
