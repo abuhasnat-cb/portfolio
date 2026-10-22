@@ -20,8 +20,8 @@ Production hosting remains Cloudflare Pages at `oveehasnat.com`. Until that proj
 
 ## Consequences
 
-- The Pages workflow sets `configure-pages` `enablement: true` so the first run can create the Pages site when the token allows.
-- If enablement still fails (org policy / missing admin), the owner must set **Settings → Pages → Source = GitHub Actions** once.
+- The Pages workflow sets `configure-pages` `enablement: true`, but creating the site via the Actions token failed (_Resource not accessible by integration_).
+- Owner set **Settings → Pages → Source = GitHub Actions** once; subsequent deploys use that site.
 - Content URLs, JSON-LD, `index.md`, `llms.txt`, sitemap, and alternate links follow `SITE_URL`.
 - Plain `<a href>` paths use `withBasePath()`; Next `Link` gets `basePath` automatically.
 - When Cloudflare production is live, this preview can be disabled or removed; ADR can be superseded.

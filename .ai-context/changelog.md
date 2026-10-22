@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-22 — Pages redeploy after owner enablement
+
+- Owner set **Settings → Pages → Source = GitHub Actions**. Docs/plan updated; merge to `develop` retriggers the preview deploy.
+
 ## 2026-10-22 — Pages workflow enablement
 
 - Set `actions/configure-pages` `enablement: true` so the first deploy can create the Pages site when the API allows it.
