@@ -14,9 +14,9 @@ Ship a temporary preview at https://abuhasnat-cb.github.io/portfolio/ without ch
 
 ## Follow-ups for the owner
 
-- Flip Pages source to **GitHub Actions** if not already set.
+- Flip Pages source to **GitHub Actions** if not already set (workflow now passes `enablement: true` to `configure-pages`, which may create the site automatically when the token allows).
 - After first successful deploy, confirm https://abuhasnat-cb.github.io/portfolio/
 
 ## Status
 
-Implementation complete pending CI green and merge into `develop`.
+First post-merge Pages run failed: Pages site not found. Follow-up: `enablement: true` on configure-pages.

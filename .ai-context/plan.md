@@ -14,7 +14,7 @@
 ## Next
 
 - [ ] Owner: enable branch protection on `develop` / `main` (require CI)
-- [ ] Owner: **Settings → Pages → Source = GitHub Actions** (required once for preview)
+- [ ] Owner: **Settings → Pages → Source = GitHub Actions** if `configure-pages` enablement cannot create the site (workflow already passes `enablement: true`)
 - [ ] Owner: Cloudflare Pages project → build `pnpm build`, output `out`, Node 22
 - [ ] Owner: set `profile.resumeUrl` to Google Drive share link when ready
 - [ ] Generate and host OG image; set `seo.ogImage`
