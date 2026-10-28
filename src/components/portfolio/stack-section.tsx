@@ -9,7 +9,7 @@ export function StackSection({ skills }: { skills: SkillCategory[] }) {
     >
       <h2 id="stack-heading" className="section-title">
         <span className="section-index" aria-hidden="true">
-          04
+          05
         </span>
         Stack
       </h2>

@@ -1,0 +1,10 @@
+{
+  "title": "Spike post Alpha",
+  "slug": "spike-alpha",
+  "description": "Throwaway sample used only to prove intercepting-route post modals under static export at root and /portfolio base paths.",
+  "date": "2026-10-28",
+  "tags": ["spike", "next.js", "static-export"],
+  "summary": "Throwaway Alpha sample for the posts intercepting-routes spike. Not a real article. Safe to delete when the full Posts feature ships.",
+  "body": "## Spike Alpha\n\nMinimal body for the intercepting-routes feasibility spike.\n\n```ts\n const slug = \"spike-alpha\";\n```\n",
+  "draft": false
+}

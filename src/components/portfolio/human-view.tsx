@@ -1,4 +1,5 @@
 import type { SiteContent } from "@/content";
+import { PostsTeaser } from "@/components/posts/posts-teaser";
 import { AboutSection } from "./about-section";
 import { ContactSection } from "./contact-section";
 import { ExperienceSection } from "./experience-section";
@@ -43,18 +44,24 @@ export function HumanView({ content }: { content: SiteContent }) {
       <div className="hatch-sep screen-line-bottom" aria-hidden="true" />
 
       <div className="fx [--i:6]">
-        <StackSection skills={skills} />
+        <PostsTeaser />
       </div>
 
       <div className="hatch-sep screen-line-bottom" aria-hidden="true" />
 
       <div className="fx [--i:7]">
+        <StackSection skills={skills} />
+      </div>
+
+      <div className="hatch-sep screen-line-bottom" aria-hidden="true" />
+
+      <div className="fx [--i:8]">
         <ContactSection profile={profile} />
       </div>
 
       <div className="hatch-sep screen-line-bottom" aria-hidden="true" />
 
-      <footer className="fx flex justify-between px-[var(--pad)] py-5 font-mono text-[length:var(--text-min)] leading-none text-[var(--faint)] [--i:8]">
+      <footer className="fx flex justify-between px-[var(--pad)] py-5 font-mono text-[length:var(--text-min)] leading-none text-[var(--faint)] [--i:9]">
         <span>{profile.site}</span>
         <span>Dhaka · {profile.timezoneLabel}</span>
       </footer>

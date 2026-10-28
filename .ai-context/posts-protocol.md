@@ -44,11 +44,12 @@ Posts list UI (landing):
 - Plain heading (no section index theater).
 - Same numbered title + date rows as the landing list (all posts, not only 3).
 
-### Reading a post — intercepting + parallel routes
+### Reading a post — soft modal + standalone page
 
-- Clicking a post opens it in a **modal** via Next.js intercepting + parallel routes (`@modal` slot, `(.)posts/[slug]`).
-- URL becomes `/posts/<slug>` while the underlying list (or home) stays visible behind the modal.
-- A **direct load** of `/posts/<slug>` renders the **standalone page** (the URL that ranks / is shared).
+> **Spike finding (ADR 0013):** Next.js intercepting routes (`@modal` + `(.)posts/[slug]`) **hard-fail** `output: 'export'`. Do not add them. Soft-nav modal UX uses the **History API** (`pushState` / `back`) with `withBasePath`; hard load / refresh still hits `app/posts/[slug]`.
+
+- Clicking a post opens it in a **modal** over the current page; URL becomes `/posts/<slug>/` (base-path aware).
+- A **direct load** / refresh of `/posts/<slug>/` renders the **standalone page** (the URL that ranks / is shared).
 
 **Modal chrome:**
 
@@ -71,14 +72,9 @@ Posts list UI (landing):
 - Line: `AI-native Software Engineer · Dhaka, BD`
 - Buttons only: **LinkedIn** and **Email me** (no GitHub / Upwork here)
 
-### Hosting constraint (spike first)
+### Hosting constraint (spike)
 
-Implementation **must** start with a **spike branch** that proves intercepting routes work with `output: 'export'` on:
-
-1. GitHub Pages under base path `/portfolio`
-2. Root (future Cloudflare Pages on `oveehasnat.com`)
-
-Cover both with Playwright e2e. **No full Posts UI until the spike is green and merged.**
+Spike completed (ADR 0013): soft modal + standalone page proven under `output: 'export'` at `/portfolio` and at `/`, with Playwright e2e both paths. Full Posts UI may proceed using the History-API modal pattern (not Next intercepting routes).
 
 ---
 
@@ -243,6 +239,6 @@ The object below is a **shape example**. It is not site content. Do not copy it 
 
 ## Implementation order (not part of intake)
 
-1. **Spike** — intercepting + parallel routes on static export at `/portfolio` and at `/`; e2e both. See plan.
-2. **Feature** — schema, `pnpm post:check`, CI hook, content folder, landing §04, `/posts`, modal/page, generators (RSS, llms, `.md`, JSON-LD, sitemap).
+1. **Spike** — done (ADR 0013). Native intercepting routes unsupported; History-API modal + standalone page works at both base paths.
+2. **Feature** — schema, `pnpm post:check`, CI hook, content folder, landing §04, `/posts`, History-API modal + standalone page, generators (RSS, llms, `.md`, JSON-LD, sitemap). Remove throwaway `spike-*` posts.
 3. **Intake** — this protocol for every new post JSON PR.
