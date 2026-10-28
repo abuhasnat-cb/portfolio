@@ -10,7 +10,7 @@ export function ContactSection({ profile }: { profile: Profile }) {
     >
       <h2 id="contact-heading" className="section-title">
         <span className="section-index" aria-hidden="true">
-          05
+          06
         </span>
         Contact
       </h2>

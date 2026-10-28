@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted (docs locked; implementation not started)
+Accepted (IA locked; intercepting-route delivery amended by ADR 0013)
 
 ## Context
 
@@ -21,8 +21,8 @@ The portfolio is a single-page static export today. Ovee wants a Posts section a
 
 ### Delivery order
 
-1. **Spike branch** proving intercepting routes under static export at base path `/portfolio` and at `/`, with Playwright e2e for both. Full Posts UI waits on a green spike merge.
-2. **Feature** implementing schema, intake script, UI, and generators.
+1. **Spike branch** — done; see ADR 0013. Native intercepting routes hard-fail static export; History-API soft modal + standalone page proven at `/portfolio` and `/`.
+2. **Feature** implementing schema, intake script, final UI (History-API modal), and generators.
 
 ### Content + intake
 
@@ -37,6 +37,6 @@ Mandatory agent checklist: [`.ai-context/posts-protocol.md`](../posts-protocol.m
 ## Consequences
 
 - Section indices on the landing page will renumber when the feature ships; Agent markdown / `index.md` must follow.
-- Static export + intercepting routes are a hard gate; if the spike fails, revisit modal approach before building intake UI.
+- Spike failed for native intercepting routes; feature uses History-API modal (ADR 0013) instead of abandoning modal UX.
 - Post PRs stay content-only (`src/content/posts/*.json`) once the feature exists; schema/UI changes are separate.
 - Privacy ADR 0007 extends to post bodies and metadata via the posts protocol.

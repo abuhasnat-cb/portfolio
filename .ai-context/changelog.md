@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-28 — Posts intercepting-routes spike (ADR 0013)
+
+- Tried `@modal` + `(.)posts/[slug]`: `next build` hard-fails under `output: 'export'`.
+- Spike substitute: History-API soft modal on home + static `app/posts/[slug]` standalone; `withBasePath` for `/portfolio`.
+- Throwaway posts `spike-alpha` / `spike-beta`; minimal §04 teaser; Stack→05 / Contact→06.
+- Playwright `posts-spike.spec.ts` on root and Pages base-path configs.
+- Protocol + plan updated; full Posts feature still pending.
+
 ## 2026-10-28 — Blog posts protocol + ADR 0012
 
 - Added mandatory [`.ai-context/posts-protocol.md`](posts-protocol.md): intake checklist, field rules, content rules, pre-PR self-check, example JSON (marked example-only).
