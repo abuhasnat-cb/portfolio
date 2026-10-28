@@ -32,12 +32,13 @@ GitHub Pages workflow deploys only on **push to `develop`** (plus `workflow_disp
 - e2e: portal parent is `body`, overlay `position:fixed` inset covering `innerWidth`×`innerHeight`, body scroll locked.
 - Artifacts: `/opt/cursor/artifacts/posts-mockup-compare/` (1440 light/dark + 390 + side-by-side compares).
 
-## Follow-ups (locked HTML mockup pass — in progress)
+## Follow-ups (locked HTML mockup pass — blocked)
 
-- User clarified stale PNGs; **source of truth is mockup HTML** (`home.html` / `list.html` / `modal.html` / `post.html` + `site.css`). Those files were **not present** on the Cloud Agent VM at `uploads/` (re-attach requested).
-- Mobile home Posts fixes applied from explicit feedback + comparison shots: index inline with title; date under title (title-aligned); removed `(n)` from §04 heading; tighter type; kept `.pmore` View all; modal is a full-viewport sheet on ≤640px.
-- `/posts` index: dropped intro blurb + count superscript to match list mockup comparisons.
-- Still blocked on pixel-perfect HTML Playwright renders until the five mockup files are re-attached.
+- User clarified stale PNGs; **source of truth is mockup HTML** (`home.html` / `list.html` / `modal.html` / `post.html` / `site.css` / `live.html`).
+- Intended landing path in-repo: `.ai-context/mockups/posts/` (commit so they persist).
+- **2026-10-28 follow-up:** user said files were re-attached; agent re-scanned workspace/stores/uploads/Drive — **still not on the VM**. External action re-requested. Cannot Playwright-render or pixel-match until bytes arrive.
+- Mobile home Posts fixes already applied from explicit feedback: index inline with title; date under title (title-aligned); removed `(n)` from §04; `.pmore` View all; modal full-viewport sheet ≤640px.
+- CI green on `c6cc28e` (mobile polish); PR #11 not merged.
 
 ## Follow-ups
 
