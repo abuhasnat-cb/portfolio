@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import type { Profile } from "@/content";
 import { AoMark } from "@/components/portfolio/ao-mark";
 import { ThemeToggle } from "@/components/portfolio/theme-toggle";
@@ -22,7 +23,7 @@ export function PostsChrome({
           aria-label="Primary"
         >
           <ThemeToggle />
-          <a
+          <Link
             className="cta-link header-control header-contact"
             href="/#contact"
             aria-label="Get in touch"
@@ -45,7 +46,7 @@ export function PostsChrome({
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="m3 7 9 6 9-6" />
             </svg>
-          </a>
+          </Link>
           {showResume ? (
             <a
               className="btn-primary header-control header-resume"

@@ -34,11 +34,6 @@ export function PostsList({
 }) {
   const visible = typeof limit === "number" ? posts.slice(0, limit) : posts;
   const [open, setOpen] = useState<Post | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const close = useCallback(() => {
     setOpen(null);
@@ -126,7 +121,7 @@ export function PostsList({
         </Link>
       ) : null}
 
-      {mounted && open ? (
+      {open ? (
         <PostModal
           post={open}
           older={older}

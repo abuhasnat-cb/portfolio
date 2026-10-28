@@ -25,6 +25,13 @@ Ship the Posts feature per posts-protocol + ADR 0012/0013 (History-API soft moda
 
 GitHub Pages workflow deploys only on **push to `develop`** (plus `workflow_dispatch`). Auto Pages URL after merge: `https://abuhasnat-cb.github.io/portfolio/`. Pre-merge live preview requires manually dispatching that workflow on this feature branch (temporarily replaces the develop preview until develop is redeployed).
 
+## Follow-ups (mockup UI pass)
+
+- Soft modal now uses `createPortal(..., document.body)` + `overflow: hidden` on `body` so the overlay is full-viewport (not trapped by `.fx` transform).
+- Restyled list / modal / standalone / author / Older to locked mockups (Open page + Close; LinkedIn + Email me only; Back to posts; View all `.pmore`).
+- e2e: portal parent is `body`, overlay `position:fixed` inset covering `innerWidth`×`innerHeight`, body scroll locked.
+- Artifacts: `/opt/cursor/artifacts/posts-mockup-compare/` (1440 light/dark + 390 + side-by-side compares).
+
 ## Follow-ups
 
 - Owner review + merge (agent does not merge)

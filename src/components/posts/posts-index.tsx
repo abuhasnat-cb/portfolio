@@ -11,7 +11,10 @@ export function PostsIndexPage({
   profile: Profile;
 }) {
   return (
-    <main className="mx-auto w-full max-w-[768px] px-0 py-8 sm:py-10" data-posts-index="">
+    <main
+      className="mx-auto w-full max-w-[768px] px-0 py-8 sm:py-10"
+      data-posts-index=""
+    >
       <div className="px-[var(--pad)]">
         <nav
           className="font-mono text-[length:var(--text-min)] text-[var(--muted)]"

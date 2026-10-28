@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-28 — Posts UI mockup alignment
+
+- Soft modal portals to `document.body` with fixed full-viewport backdrop + body scroll lock (fixes `.fx` transform containing-block trap).
+- List rows Stack-aligned; `/posts` breadcrumb + chrome; author (LinkedIn ↗ + Email me); Older → card; Back to posts; date · read time / tags meta.
+- e2e asserts modal overlay covers the viewport and mounts under `body`.
+
 ## 2026-10-28 — Full Posts feature
 
 - Landing §04 Posts (latest 3 rows + View all); `/posts` list; History-API soft modal + standalone page (ADR 0013).

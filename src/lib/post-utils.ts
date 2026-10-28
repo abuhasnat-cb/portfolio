@@ -14,7 +14,7 @@ export function postLastmod(post: Post): string {
 export function formatPostDate(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso.slice(0, 10);
-  return d.toLocaleDateString("en-GB", {
+  return d.toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",

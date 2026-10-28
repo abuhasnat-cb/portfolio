@@ -86,7 +86,9 @@ export function PostModal({
             <PostBody body={post.body} />
           </div>
           <PostAuthor profile={profile} />
-          {older ? <OlderPostCard post={older} onSoftOpen={onSoftOpen} /> : null}
+          {older ? (
+            <OlderPostCard post={older} onSoftOpen={onSoftOpen} />
+          ) : null}
         </div>
       </div>
     </div>

@@ -16,7 +16,10 @@ export function OlderPostCard({
 
   return (
     <div className="older-nav mt-8 grid grid-cols-1 border border-[var(--line)] sm:grid-cols-2">
-      <div className="hidden border-[var(--line)] sm:block sm:border-r" aria-hidden="true" />
+      <div
+        className="hidden border-[var(--line)] sm:block sm:border-r"
+        aria-hidden="true"
+      />
       <Link
         href={href}
         data-post-older=""

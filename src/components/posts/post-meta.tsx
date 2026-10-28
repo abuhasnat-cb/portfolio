@@ -2,13 +2,7 @@ import type { Post } from "@/content/post-schema";
 import { formatPostDate, readingTimeMinutes } from "@/lib/post-utils";
 
 /** Shared post header: date · read time, title, description, tags. */
-export function PostMeta({
-  post,
-  titleId,
-}: {
-  post: Post;
-  titleId?: string;
-}) {
+export function PostMeta({ post, titleId }: { post: Post; titleId?: string }) {
   const minutes = readingTimeMinutes(post.body);
 
   return (
