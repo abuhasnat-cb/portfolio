@@ -2,6 +2,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { content } from "@/content";
+import { posts } from "@/content/posts";
 import { toLlmsTxt, toMarkdown } from "@/lib/markdown";
 import { PHONE_PATTERN } from "@/lib/phone-pattern";
 
@@ -22,8 +23,8 @@ function walkFiles(dir: string, acc: string[] = []): string[] {
 
 describe("static artifact generators match public files when present", () => {
   it("index.md and llms.txt match generators", () => {
-    const md = toMarkdown(content);
-    const llms = toLlmsTxt(content);
+    const md = toMarkdown(content, posts);
+    const llms = toLlmsTxt(content, posts);
 
     if (existsSync(join(pubDir, "index.md"))) {
       expect(readFileSync(join(pubDir, "index.md"), "utf8")).toBe(md);
@@ -48,8 +49,15 @@ describe("build output (when out/ exists)", () => {
         "llms.txt",
         "sitemap.xml",
         "robots.txt",
+        "posts/feed.xml",
       ]) {
         expect(existsSync(join(outDir, file))).toBe(true);
+      }
+      for (const post of posts) {
+        expect(existsSync(join(outDir, "posts", `${post.slug}.md`))).toBe(true);
+        expect(existsSync(join(outDir, "posts", post.slug, "index.html"))).toBe(
+          true,
+        );
       }
     },
   );

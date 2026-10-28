@@ -26,10 +26,11 @@
 - [ ] After production is live: disable or remove GitHub Pages preview workflow
 - [x] Docs: posts protocol + ADR 0012 (intake checklist, locked UI/IA, no schema/UI yet)
 - [x] **Spike:** intercepting routes **unsupported** with static export; History-API soft modal + `app/posts/[slug]` standalone proven at `/` and `/portfolio` (e2e); ADR 0013
-- [ ] **Feature (after spike merge):** Posts §04 final UI (latest 3 + View all); `/posts` list; History-API modal + standalone (not Next intercept); author block; Older card; Zod + `pnpm post:check` + CI; generators (BlogPosting/BreadcrumbList/FAQPage, sitemap lastmod, `/posts/feed.xml`, llms.txt, `/posts/<slug>.md`); remove `spike-*` sample posts
+- [x] **Feature:** Posts §04 + `/posts` + History-API modal + standalone; Zod + `pnpm post:check` + CI; SEO/AEO generators; `[SAMPLE]` placeholder posts for preview (remove before real writing)
 
 ## Parking lot
 
 - Optional project detail routes (currently single page only)
 - Amplitude / analytics (not required for v1)
-- First real post JSON via posts protocol (after feature ships)
+- Remove `[SAMPLE]` placeholder posts; first real post JSON via posts protocol
+- Redeploy Pages from `develop` after feature merge (or after any feature-branch `workflow_dispatch` preview)

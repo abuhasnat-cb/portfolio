@@ -1,5 +1,6 @@
 import type { SiteContent } from "@/content";
-import { PostsTeaser } from "@/components/posts/posts-teaser";
+import type { Post } from "@/content/post-schema";
+import { PostsSection } from "@/components/posts/posts-section";
 import { AboutSection } from "./about-section";
 import { ContactSection } from "./contact-section";
 import { ExperienceSection } from "./experience-section";
@@ -7,7 +8,13 @@ import { InfoGrid } from "./info-grid";
 import { ProjectsSection } from "./projects-section";
 import { StackSection } from "./stack-section";
 
-export function HumanView({ content }: { content: SiteContent }) {
+export function HumanView({
+  content,
+  posts,
+}: {
+  content: SiteContent;
+  posts: Post[];
+}) {
   const { profile, experience, projects, skills } = content;
 
   return (
@@ -44,7 +51,7 @@ export function HumanView({ content }: { content: SiteContent }) {
       <div className="hatch-sep screen-line-bottom" aria-hidden="true" />
 
       <div className="fx [--i:6]">
-        <PostsTeaser />
+        <PostsSection posts={posts} profile={profile} />
       </div>
 
       <div className="hatch-sep screen-line-bottom" aria-hidden="true" />

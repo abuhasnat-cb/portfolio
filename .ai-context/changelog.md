@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-28 — Full Posts feature
+
+- Landing §04 Posts (latest 3 rows + View all); `/posts` list; History-API soft modal + standalone page (ADR 0013).
+- Author block + Older card; Cobalt accent; light/dark; mobile; axe AA on post page.
+- Zod schema + `pnpm post:check` (CI); posts as `src/content/posts/<slug>.json`.
+- SEO/AEO: per-post meta/OG/Twitter/canonical, BlogPosting + BreadcrumbList (+FAQPage), sitemap lastmod, `/posts/feed.xml`, llms.txt, `/posts/<slug>.md`.
+- Removed spike posts; added three `[SAMPLE]` placeholders for preview (delete later).
+- Playwright `posts.spec.ts` at `/` and `/portfolio`.
+
 ## 2026-10-28 — Posts intercepting-routes spike (ADR 0013)
 
 - Tried `@modal` + `(.)posts/[slug]`: `next build` hard-fails under `output: 'export'`.

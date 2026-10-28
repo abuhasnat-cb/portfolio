@@ -1,0 +1,10 @@
+{
+  "title": "[SAMPLE] Agent-readable surfaces",
+  "slug": "sample-agent-surfaces",
+  "description": "PLACEHOLDER sample listing agent surfaces (llms.txt, markdown mirrors, JSON-LD). Delete after the Posts preview is approved by the site owner.",
+  "date": "2026-10-26",
+  "tags": ["sample", "placeholder", "aeo", "llms"],
+  "summary": "PLACEHOLDER overview of agent-facing files generated beside each post. Real posts will get BlogPosting JSON-LD, RSS items, sitemap rows, and /posts/<slug>.md. Remove this sample when done testing.",
+  "body": "## PLACEHOLDER  -  agent surfaces\n\nEach published post should also appear in:\n\n- `llms.txt`\n- `/posts/feed.xml`\n- `sitemap.xml` with `lastmod`\n- `/posts/<slug>.md`\n\n```json\n{ \"slug\": \"sample-agent-surfaces\", \"draft\": false }\n```\n\nThis body is sample text only. Do not treat claims here as profile facts.\n",
+  "updated": "2026-10-28"
+}

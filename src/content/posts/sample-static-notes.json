@@ -1,0 +1,9 @@
+{
+  "title": "[SAMPLE] Notes on static export",
+  "slug": "sample-static-notes",
+  "description": "PLACEHOLDER sample about static Next.js export for portfolio previews. Not real advice copy. Remove this JSON when real posts are ready to publish.",
+  "date": "2026-10-27",
+  "tags": ["sample", "placeholder", "next.js", "static-export"],
+  "summary": "PLACEHOLDER notes used to fill the Posts list during feature preview. The site stays a static export on GitHub Pages and later Cloudflare Pages. Delete this sample when real posts arrive.",
+  "body": "## PLACEHOLDER  -  static export notes\n\nThis file is a **sample** for UI and SEO wiring. It is not finished writing.\n\nStatic export means every route is an HTML file at build time. Soft modals use the History API because Next intercepting routes are not supported with `output: 'export'`.\n\n```bash\npnpm build\npnpm post:check src/content/posts/sample-static-notes.json\n```\n\nRemove `src/content/posts/sample-static-notes.json` after preview sign-off.\n"
+}

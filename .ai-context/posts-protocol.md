@@ -1,18 +1,16 @@
 # Blog posts protocol (mandatory)
 
-**Status:** Locked by owner (Ovee). Docs-only until the spike and feature land.
+**Status:** Locked by owner (Ovee). Feature shipped (History-API modal per ADR 0013).
 **Audience:** Every AI agent (and human) that writes or adds a blog post.
 **Do not skip steps.** A post PR is invalid if this checklist was not followed.
 
-Related ADR: [`decisions/0012-blog-posts-architecture.md`](decisions/0012-blog-posts-architecture.md).
+Related ADRs: [`0012-blog-posts-architecture.md`](decisions/0012-blog-posts-architecture.md), [`0013-posts-modal-history-api.md`](decisions/0013-posts-modal-history-api.md).
 
 ---
 
 ## When this protocol applies
 
-Use this protocol whenever Ovee hands you a post (as JSON or draft copy) and asks you to add it to the site. Do **not** invent posts. Do **not** implement schema, `pnpm post:check`, or UI in a post-intake PR unless that work is already merged — those land in the feature PR first.
-
-Until the feature exists, refuse to add post files and point at the plan spike + feature items in [`plan.md`](plan.md).
+Use this protocol whenever Ovee hands you a post (as JSON or draft copy) and asks you to add it to the site. Do **not** invent posts. Post-intake PRs should only add/update `src/content/posts/<slug>.json` (plus `.ai-context` if required). Schema / UI / generators live in the feature; do not reinvent them in an intake PR.
 
 ---
 
@@ -239,6 +237,6 @@ The object below is a **shape example**. It is not site content. Do not copy it 
 
 ## Implementation order (not part of intake)
 
-1. **Spike** — done (ADR 0013). Native intercepting routes unsupported; History-API modal + standalone page works at both base paths.
-2. **Feature** — schema, `pnpm post:check`, CI hook, content folder, landing §04, `/posts`, History-API modal + standalone page, generators (RSS, llms, `.md`, JSON-LD, sitemap). Remove throwaway `spike-*` posts.
+1. **Spike** — done (ADR 0013).
+2. **Feature** — done (schema, `post:check`, CI, UI, generators). Replace `[SAMPLE]` placeholders with real posts via intake.
 3. **Intake** — this protocol for every new post JSON PR.

@@ -1,58 +1,69 @@
 "use client";
 
 import Link from "next/link";
-import type { SpikePost } from "@/content/posts";
+import type { Profile } from "@/content";
+import type { Post } from "@/content/post-schema";
+import { formatPostDate } from "@/lib/post-utils";
+import { OlderPostCard } from "./older-post-card";
+import { PostAuthor } from "./post-author";
 import { PostBody } from "./post-body";
 
 export function PostModal({
   post,
+  older,
+  profile,
   onClose,
+  onSoftOpen,
 }: {
-  post: SpikePost;
+  post: Post;
+  older?: Post;
+  profile: Profile;
   onClose: () => void;
+  onSoftOpen?: (post: Post) => void;
 }) {
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-4 pt-[10vh]"
+      className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto bg-black/50 p-4 pt-[max(2rem,8vh)] pb-10"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="spike-post-modal-title"
-      data-spike-post-modal=""
+      aria-labelledby="post-modal-title"
+      data-post-modal=""
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
-      <div className="w-full max-w-xl border border-[var(--line)] bg-[var(--bg)] p-6 shadow-lg">
-        <div className="mb-4 flex items-center justify-between gap-3 font-mono text-[length:var(--text-min)]">
+      <div className="w-full max-w-[640px] border border-[var(--line)] bg-[var(--bg)] p-5 shadow-lg sm:p-7">
+        <div className="mb-5 flex items-center justify-between gap-3 font-mono text-[length:var(--text-min)]">
           <Link
             href={`/posts/${post.slug}/`}
             className="text-[var(--muted)] underline-offset-2 hover:text-[var(--accent)] hover:underline"
-            data-spike-open-page=""
-            // Full navigation to the ranking standalone page.
-            onClick={() => {
-              /* let Next Link navigate */
-            }}
+            data-post-open-page=""
           >
             Open page
           </Link>
           <button
             type="button"
             className="text-[var(--muted)] hover:text-[var(--fg)]"
-            data-spike-close-modal=""
+            data-post-close-modal=""
             onClick={onClose}
           >
             Close
           </button>
         </div>
         <h1
-          id="spike-post-modal-title"
-          className="m-0 text-xl font-medium tracking-[-0.02em]"
+          id="post-modal-title"
+          className="m-0 text-xl font-medium tracking-[-0.02em] text-[var(--fg)] sm:text-2xl"
         >
           {post.title}
         </h1>
-        <p className="mt-1 font-mono text-[length:var(--text-min)] text-[var(--muted)]">
-          <time dateTime={post.date}>{post.date}</time>
+        <p className="mt-2 font-mono text-[length:var(--text-min)] text-[var(--muted)]">
+          <time dateTime={post.date}>{formatPostDate(post.date)}</time>
         </p>
-        <div className="mt-4">
+        <div className="mt-5">
           <PostBody body={post.body} />
         </div>
+        <PostAuthor profile={profile} />
+        {older ? <OlderPostCard post={older} onSoftOpen={onSoftOpen} /> : null}
       </div>
     </div>
   );

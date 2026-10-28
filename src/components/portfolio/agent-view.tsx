@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import type { SiteContent } from "@/content";
+import type { Post } from "@/content/post-schema";
 import { toMarkdown } from "@/lib/markdown";
 import { withBasePath } from "@/lib/site-env";
 import { slugifyHeading } from "@/lib/utils";
@@ -75,8 +76,14 @@ function highlightMarkdown(src: string): string {
     .join("");
 }
 
-export function AgentView({ content }: { content: SiteContent }) {
-  const markdown = useMemo(() => toMarkdown(content), [content]);
+export function AgentView({
+  content,
+  posts = [],
+}: {
+  content: SiteContent;
+  posts?: Post[];
+}) {
+  const markdown = useMemo(() => toMarkdown(content, posts), [content, posts]);
   const html = useMemo(() => highlightMarkdown(markdown), [markdown]);
 
   return (

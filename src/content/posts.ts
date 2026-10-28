@@ -1,29 +1,68 @@
-import spikeAlpha from "./posts/spike-alpha.json";
-import spikeBeta from "./posts/spike-beta.json";
+import { readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { formatPostIssues, postSchema, type Post } from "./post-schema";
 
-/** Minimal post shape for the intercepting-routes spike (not the final Zod schema). */
-export type SpikePost = {
-  title: string;
-  slug: string;
-  description: string;
-  date: string;
-  tags: string[];
-  summary: string;
-  body: string;
-  draft?: boolean;
-};
+export type { Post } from "./post-schema";
+export {
+  formatPostDate,
+  olderPostFromList,
+  postCanonical,
+  postLastmod,
+} from "@/lib/post-utils";
 
-const all: SpikePost[] = [spikeAlpha, spikeBeta];
+const POSTS_DIR = join(process.cwd(), "src/content/posts");
 
-/** Non-draft posts, newest first. */
-export const posts: SpikePost[] = all
-  .filter((p) => !p.draft)
-  .sort((a, b) => b.date.localeCompare(a.date));
+function loadAllPosts(): Post[] {
+  const files = readdirSync(POSTS_DIR)
+    .filter((f) => f.endsWith(".json"))
+    .sort();
+  const posts: Post[] = [];
+  const slugs = new Set<string>();
 
-export function getPost(slug: string): SpikePost | undefined {
+  for (const file of files) {
+    const raw = JSON.parse(
+      readFileSync(join(POSTS_DIR, file), "utf8"),
+    ) as unknown;
+    const parsed = postSchema.safeParse(raw);
+    if (!parsed.success) {
+      const details = formatPostIssues(parsed.error.issues).join("; ");
+      throw new Error(`Invalid post ${file}: ${details}`);
+    }
+    const post = parsed.data;
+    const expected = `${post.slug}.json`;
+    if (file !== expected) {
+      throw new Error(
+        `Post file ${file} must be named ${expected} to match slug "${post.slug}"`,
+      );
+    }
+    if (slugs.has(post.slug)) {
+      throw new Error(`Duplicate post slug: ${post.slug}`);
+    }
+    slugs.add(post.slug);
+    posts.push(post);
+  }
+
+  return posts.sort((a, b) => b.date.localeCompare(a.date));
+}
+
+const allPosts = loadAllPosts();
+
+/** All posts including drafts (build / check). */
+export const allPostsIncludingDrafts: Post[] = allPosts;
+
+/** Published posts only, newest first. */
+export const posts: Post[] = allPosts.filter((p) => !p.draft);
+
+export function getPost(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);
 }
 
 export function getPostSlugs(): string[] {
   return posts.map((p) => p.slug);
+}
+
+export function getOlderPost(slug: string): Post | undefined {
+  const index = posts.findIndex((p) => p.slug === slug);
+  if (index < 0 || index >= posts.length - 1) return undefined;
+  return posts[index + 1];
 }

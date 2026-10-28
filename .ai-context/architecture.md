@@ -28,7 +28,7 @@ src/content/*.ts  →  content object
 - Generators live in `src/lib/markdown.ts` and `src/lib/json-ld.ts`.
 - `pnpm generate` / `prebuild` writes public artifacts from content.
 
-**Posts (ADR 0012 + 0013):** `src/content/posts/<slug>.json` (spike samples today). Soft-nav modal uses the **History API** + `withBasePath` — Next intercepting routes are unsupported with `output: 'export'`. Standalone ranking page: `app/posts/[slug]`. Full feature (Zod, `post:check`, final UI, generators) still planned; agents follow [`.ai-context/posts-protocol.md`](posts-protocol.md).
+**Posts (ADR 0012 + 0013):** `src/content/posts/<slug>.json` validated by Zod / `pnpm post:check`. Soft-nav modal uses the **History API** + `withBasePath` (Next intercepting routes unsupported with `output: 'export'`). Standalone ranking page: `app/posts/[slug]`. Generators emit RSS, per-post `.md`, sitemap, llms, BlogPosting JSON-LD. Agents follow [`.ai-context/posts-protocol.md`](posts-protocol.md).
 
 ## App structure
 
