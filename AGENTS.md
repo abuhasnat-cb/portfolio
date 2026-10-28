@@ -14,14 +14,17 @@ That file is the protocol: what to read before work, what to update during work,
 
 ## Quick pointers
 
-| Topic                      | Where                         |
-| -------------------------- | ----------------------------- |
-| Goals, audience, non-goals | `.ai-context/project.md`      |
-| System shape               | `.ai-context/architecture.md` |
-| Code & SEO conventions     | `.ai-context/conventions.md`  |
-| Current plan               | `.ai-context/plan.md`         |
-| Decision records           | `.ai-context/decisions/`      |
-| Changelog                  | `.ai-context/changelog.md`    |
-| Session notes              | `.ai-context/sessions/`       |
+| Topic                      | Where                           |
+| -------------------------- | ------------------------------- |
+| Goals, audience, non-goals | `.ai-context/project.md`        |
+| System shape               | `.ai-context/architecture.md`   |
+| Code & SEO conventions     | `.ai-context/conventions.md`    |
+| Current plan               | `.ai-context/plan.md`           |
+| Decision records           | `.ai-context/decisions/`        |
+| Changelog                  | `.ai-context/changelog.md`      |
+| Session notes              | `.ai-context/sessions/`         |
+| **Blog posts (mandatory)** | `.ai-context/posts-protocol.md` |
 
 Site copy lives in `src/content/`. Do not hardcode profile data in components.
+
+When adding or editing a blog post, follow [`.ai-context/posts-protocol.md`](.ai-context/posts-protocol.md) exactly (intake checklist, field rules, pre-PR self-check). Architecture: ADR 0012.
