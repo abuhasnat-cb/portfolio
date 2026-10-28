@@ -34,6 +34,11 @@ export function PostsList({
 }) {
   const visible = typeof limit === "number" ? posts.slice(0, limit) : posts;
   const [open, setOpen] = useState<Post | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const close = useCallback(() => {
     setOpen(null);
@@ -84,13 +89,13 @@ export function PostsList({
             >
               <Link
                 href={`/posts/${post.slug}/`}
-                className="flex items-baseline gap-3 py-5 pr-[var(--pad)] pl-[var(--pad)] text-[var(--fg)] transition-colors hover:text-[var(--accent)] max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-1.5"
+                className="posts-row-link flex items-baseline gap-2 py-5 pr-[var(--pad)] pl-[var(--pad)] text-[var(--fg)] no-underline transition-colors hover:text-[var(--accent)] max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-1.5"
                 data-post-link={post.slug}
                 onClick={(e) => openPost(post, href, e)}
               >
                 {numbered !== false ? (
                   <span
-                    className="w-[2ch] shrink-0 font-mono text-[length:var(--text-min)] text-[var(--faint)]"
+                    className="posts-row-index w-[2ch] shrink-0 font-mono text-[length:var(--text-min)] leading-6 text-[color-mix(in_srgb,var(--muted)_80%,transparent)]"
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -101,7 +106,7 @@ export function PostsList({
                 </span>
                 <time
                   dateTime={post.date}
-                  className="shrink-0 font-mono text-[length:var(--text-min)] text-[var(--muted)] max-[640px]:pl-[calc(2ch+0.75rem)]"
+                  className="shrink-0 font-mono text-[length:var(--text-min)] leading-6 text-[var(--muted)] max-[640px]:pl-[calc(2ch+0.5rem)]"
                 >
                   {formatPostDate(post.date)}
                 </time>
@@ -121,7 +126,7 @@ export function PostsList({
         </Link>
       ) : null}
 
-      {open ? (
+      {mounted && open ? (
         <PostModal
           post={open}
           older={older}

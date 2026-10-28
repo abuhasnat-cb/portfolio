@@ -21,6 +21,12 @@ export function formatPostDate(iso: string): string {
   });
 }
 
+/** Rough reading time from markdown body (words / 200). */
+export function readingTimeMinutes(body: string): number {
+  const words = body.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
 export function olderPostFromList(
   posts: Post[],
   slug: string,

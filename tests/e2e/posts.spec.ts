@@ -22,14 +22,51 @@ test.describe("posts feature", () => {
     await page.goto("./");
     await page.locator(`[data-post-link="${SAMPLE}"]`).click();
 
-    await expect(page.locator("[data-post-modal]")).toBeVisible();
+    const modal = page.locator("[data-post-modal]");
+    await expect(modal).toBeVisible();
     await expect(page.getByRole("heading", { level: 1 }).first()).toContainText(
       "Abu Hasnat Ovee",
     );
-    await expect(page.locator("#post-modal-title")).toContainText("[SAMPLE]");
+    await expect(page.locator("[data-post-modal] h1")).toContainText(
+      "[SAMPLE]",
+    );
     await expect(page.locator("[data-post-author]")).toBeVisible();
     await expect(page.locator("[data-post-older]")).toBeVisible();
     expect(page.url()).toMatch(new RegExp(`/posts/${SAMPLE}/?(?:\\?.*)?$`));
+  });
+
+  test("modal overlay covers the full viewport via body portal", async ({
+    page,
+  }) => {
+    await page.goto("./");
+    await page.locator(`[data-post-link="${SAMPLE}"]`).click();
+    const modal = page.locator("[data-post-modal]");
+    await expect(modal).toBeVisible();
+
+    const metrics = await modal.evaluate((el) => {
+      const rect = el.getBoundingClientRect();
+      const style = window.getComputedStyle(el);
+      const parent = el.parentElement;
+      return {
+        top: rect.top,
+        left: rect.left,
+        width: rect.width,
+        height: rect.height,
+        position: style.position,
+        parentIsBody: parent === document.body,
+        vw: window.innerWidth,
+        vh: window.innerHeight,
+        bodyOverflow: document.body.style.overflow,
+      };
+    });
+
+    expect(metrics.position).toBe("fixed");
+    expect(metrics.parentIsBody).toBe(true);
+    expect(metrics.top).toBe(0);
+    expect(metrics.left).toBe(0);
+    expect(metrics.width).toBe(metrics.vw);
+    expect(metrics.height).toBe(metrics.vh);
+    expect(metrics.bodyOverflow).toBe("hidden");
   });
 
   test("close returns to home without modal", async ({ page }) => {
