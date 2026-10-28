@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-28 — Blog posts protocol + ADR 0012
+
+- Added mandatory [`.ai-context/posts-protocol.md`](posts-protocol.md): intake checklist, field rules, content rules, pre-PR self-check, example JSON (marked example-only).
+- ADR 0012 locks Posts IA (landing §04, `/posts`, intercepting modal + standalone page), spike-before-feature gate, JSON intake + planned `pnpm post:check`, and generated SEO/AEO artifacts.
+- `AGENTS.md` and `.ai-context/README.md` point at the protocol; plan lists spike then feature (no schema/script/UI in this change).
+
 ## 2026-10-22 — OG image, resume URL, AI-native meta
 
 - Static `public/og.png` (1200×630) with source in `design/og/`; OG/Twitter + JSON-LD image wired (base-path aware).

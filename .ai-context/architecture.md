@@ -28,6 +28,8 @@ src/content/*.ts  →  content object
 - Generators live in `src/lib/markdown.ts` and `src/lib/json-ld.ts`.
 - `pnpm generate` / `prebuild` writes public artifacts from content.
 
+**Planned (ADR 0012, not implemented yet):** `src/content/posts/<slug>.json` → Zod + `pnpm post:check` → landing §04 / `/posts` / intercepting modal + standalone page → per-post JSON-LD, RSS `/posts/feed.xml`, sitemap, `llms.txt`, `/posts/<slug>.md`. Agents follow [`.ai-context/posts-protocol.md`](posts-protocol.md). Spike intercepting routes on static export before the feature.
+
 ## App structure
 
 ```

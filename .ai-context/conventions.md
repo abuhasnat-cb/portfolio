@@ -21,6 +21,10 @@
 2. Run `pnpm generate` (or rely on `prebuild`).
 3. Confirm Human view, Agent view, `/index.md`, and `/llms.txt` still agree.
 
+### Blog posts
+
+Follow [`.ai-context/posts-protocol.md`](posts-protocol.md) (mandatory). After the feature ships: validate with `pnpm post:check`, write only `src/content/posts/<slug>.json`, PR into `develop`. Do not mention excluded projects; no phone or repo links in post copy.
+
 ## SEO / AEO checklist
 
 Use this on every meaningful content or head change:

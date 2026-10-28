@@ -24,8 +24,12 @@
 - [ ] Replace AO mark placeholder with final logo SVG
 - [ ] Point custom domain `oveehasnat.com` at Cloudflare Pages
 - [ ] After production is live: disable or remove GitHub Pages preview workflow
+- [x] Docs: posts protocol + ADR 0012 (intake checklist, locked UI/IA, no schema/UI yet)
+- [ ] **Spike:** prove Next.js intercepting + parallel routes (`@modal`, `(.)posts/[slug]`) work with `output: 'export'` under base path `/portfolio` **and** at `/`; Playwright e2e both paths; merge before Posts UI
+- [ ] **Feature (after spike):** Posts §04 on landing (latest 3 rows + View all); Stack→05 / Contact→06; `/posts` list; modal + standalone post page; author block; Older card; Zod schema + `pnpm post:check` + CI; generators (BlogPosting/BreadcrumbList/FAQPage, sitemap lastmod, `/posts/feed.xml`, llms.txt, `/posts/<slug>.md`)
 
 ## Parking lot
 
 - Optional project detail routes (currently single page only)
 - Amplitude / analytics (not required for v1)
+- First real post JSON via posts protocol (after feature ships)
