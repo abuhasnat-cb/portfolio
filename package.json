@@ -20,6 +20,7 @@
     "test:e2e": "playwright test",
     "lhci": "lhci autorun",
     "links": "node scripts/check-links.mjs",
+    "posts:compare-mockups": "node scripts/posts-mockup-compare.mjs",
     "ci": "pnpm post:check && pnpm typecheck && pnpm lint && pnpm format:check && pnpm test && pnpm build && pnpm test:e2e && pnpm links",
     "build:pages": "NEXT_PUBLIC_BASE_PATH=/portfolio SITE_URL=https://abuhasnat-cb.github.io/portfolio pnpm build",
     "test:e2e:pages": "playwright test -c playwright.pages.config.ts",

@@ -49,44 +49,46 @@ export function PostModal({
   const overlay = (
     <div
       className="post-modal-overlay"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={titleId}
+      role="presentation"
       data-post-modal=""
       data-post-modal-overlay=""
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="post-modal-panel" data-post-modal-panel="">
+      <div
+        className="post-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        data-post-modal-panel=""
+      >
         <div className="post-modal-chrome">
           <Link
             href={`/posts/${post.slug}/`}
-            className="text-[var(--muted)] no-underline underline-offset-2 hover:text-[var(--accent)] hover:underline"
+            className="posts-open-page viewall"
             data-post-open-page=""
           >
-            Open page
+            Open page <span aria-hidden="true">↗</span>
           </Link>
           <button
             type="button"
-            className="text-[var(--muted)] hover:text-[var(--fg)]"
+            className="post-modal-close icbtn"
             data-post-close-modal=""
+            aria-label="Close"
             onClick={onClose}
           >
-            Close
+            ✕
           </button>
         </div>
 
-        <div className="post-modal-body">
-          <PostMeta post={post} titleId={titleId} />
-          <div className="mt-6">
-            <PostBody body={post.body} />
-          </div>
-          <PostAuthor profile={profile} />
-          {older ? (
-            <OlderPostCard post={older} onSoftOpen={onSoftOpen} />
-          ) : null}
-        </div>
+        <article className="post-article">
+          <PostMeta post={post} titleId={titleId} headingLevel={2} />
+          <PostBody body={post.body} />
+        </article>
+
+        <PostAuthor profile={profile} />
+        {older ? <OlderPostCard post={older} onSoftOpen={onSoftOpen} /> : null}
       </div>
     </div>
   );

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-28 — Posts UI locked mockup alignment
+
+- Committed locked reference HTML/CSS to `.ai-context/mockups/posts/` (from `portfolio-posts-mockups-locked.tar.gz`).
+- Posts list, home View all, modal (Open page ↗ + ✕, 720px card / ≤600px sheet, body portal), standalone Back to posts, author block, Older → card aligned to mockup CSS (`.plist`, `.prow`, `.viewall`, `.author`, `.navpn`).
+- Article UI: title + date only; prose styling matches mockup.
+- Added `scripts/posts-mockup-compare.mjs` for mockup vs `out/` side-by-side PNGs at 390 light/dark and 1440 light.
+
 ## 2026-10-28 — Posts mobile row + sheet modal polish
 
 - Home/list rows: index stays inline with title on mobile; date under title (title-aligned); removed §04 `(n)` count; tighter sans semibold titles / faint dates.
