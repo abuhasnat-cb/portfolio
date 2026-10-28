@@ -778,7 +778,7 @@ a.t-link:hover .t-lt {
   transition: color 0.2s;
 }
 
-.posts-viewall.viewall {
+.viewall {
   display: inline-block;
   margin-top: 6px !important;
   font-family: var(--font-mono);
@@ -787,11 +787,11 @@ a.t-link:hover .t-lt {
   text-decoration: none;
 }
 
-.posts-viewall.viewall:hover {
+.viewall:hover {
   color: var(--accent);
 }
 
-#posts .posts-viewall.viewall {
+#posts .viewall {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -802,7 +802,7 @@ a.t-link:hover .t-lt {
   color: var(--fg);
 }
 
-#posts .posts-viewall.viewall:hover {
+#posts .viewall:hover {
   color: var(--accent);
   border-color: var(--accent-line);
 }
@@ -826,7 +826,8 @@ a.t-link:hover .t-lt {
   }
 }
 
-.posts-crumb {
+.posts-crumb,
+.crumb {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -837,7 +838,8 @@ a.t-link:hover .t-lt {
   text-decoration: none;
 }
 
-.posts-crumb:hover {
+.posts-crumb:hover,
+.crumb:hover {
   color: var(--accent);
 }
 
@@ -1043,7 +1045,7 @@ a.t-link:hover .t-lt {
   border-radius: 14px 14px 0 0;
 }
 
-.post-modal-chrome .posts-open-page.viewall {
+.post-modal-chrome a.viewall {
   margin: 0 auto 0 0 !important;
   display: inline-flex;
   align-items: center;

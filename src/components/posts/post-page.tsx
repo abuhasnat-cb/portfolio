@@ -18,7 +18,7 @@ export function PostStandalonePage({
 }) {
   return (
     <div className="stage" data-post-page="">
-      <Link href="/posts/" className="posts-crumb" data-post-back="">
+      <Link href="/posts/" className="posts-crumb crumb" data-post-back="">
         ← Back to posts
       </Link>
 

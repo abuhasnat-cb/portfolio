@@ -3,7 +3,7 @@
  * Usage: node scripts/posts-mockup-compare.mjs (after `pnpm build`)
  */
 import { createServer } from "node:http";
-import { readFile, mkdir, writeFile } from "node:fs/promises";
+import { readFile, mkdir, writeFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "@playwright/test";
@@ -45,7 +45,7 @@ const surfaces = [
     mockup: "list.html",
     implPath: "/posts/",
     mockSelector: "section.section-panel",
-    implSelector: "[data-posts-index]",
+    implSelector: "[data-posts-index] section.section-panel",
     mockPrep: async (page) => {
       await page.evaluate(() => document.querySelector(".ex-badge")?.remove());
     },
@@ -81,15 +81,40 @@ const surfaces = [
 function contentType(filePath) {
   if (filePath.endsWith(".html")) return "text/html; charset=utf-8";
   if (filePath.endsWith(".css")) return "text/css; charset=utf-8";
+  if (filePath.endsWith(".woff2")) return "font/woff2";
   return "application/octet-stream";
+}
+
+async function assertMockupStyled(page, label) {
+  const { fontFamily, cssOk } = await page.evaluate(() => ({
+    fontFamily: getComputedStyle(document.body).fontFamily,
+    cssOk: Boolean(document.querySelector('link[href="./site.css"]')),
+  }));
+  if (!cssOk || !/GeistSans/i.test(fontFamily)) {
+    throw new Error(
+      `${label}: mockup unstyled (font=${fontFamily}, site.css linked=${cssOk})`,
+    );
+  }
+}
+
+async function resolveStaticFile(dir, urlPath) {
+  let rel = urlPath === "/" ? "index.html" : urlPath.replace(/^\//, "");
+  if (rel.endsWith("/")) rel += "index.html";
+  let filePath = path.join(dir, rel);
+  try {
+    const st = await stat(filePath);
+    if (st.isDirectory()) filePath = path.join(filePath, "index.html");
+  } catch {
+    /* fall through to readFile */
+  }
+  return filePath;
 }
 
 async function startStaticServer(dir, port) {
   const server = createServer(async (req, res) => {
     try {
       const urlPath = decodeURIComponent(new URL(req.url, "http://x").pathname);
-      const rel = urlPath === "/" ? "index.html" : urlPath.replace(/^\//, "");
-      const filePath = path.join(dir, rel);
+      const filePath = await resolveStaticFile(dir, urlPath);
       const data = await readFile(filePath);
       res.writeHead(200, { "Content-Type": contentType(filePath) });
       res.end(data);
@@ -140,6 +165,13 @@ async function main() {
 
   const browser = await chromium.launch();
   try {
+    const verifyPage = await browser.newPage();
+    await verifyPage.goto(`http://127.0.0.1:${mockPort}/home.html`, {
+      waitUntil: "domcontentloaded",
+    });
+    await assertMockupStyled(verifyPage, "home.html");
+    await verifyPage.close();
+
     for (const vp of viewports) {
       for (const surface of surfaces) {
         const mockUrl = `http://127.0.0.1:${mockPort}/${surface.mockup}?theme=${vp.dark ? "dark" : "light"}`;
@@ -148,12 +180,14 @@ async function main() {
         const mockPage = await browser.newPage({
           viewport: { width: vp.width, height: vp.height },
         });
-        await mockPage.goto(mockUrl, { waitUntil: "networkidle" });
+        await mockPage.goto(mockUrl, { waitUntil: "domcontentloaded" });
+        await mockPage.evaluate(() => document.fonts.ready);
         if (vp.dark) {
           await mockPage.evaluate(() =>
             document.documentElement.classList.add("dark"),
           );
         }
+        await assertMockupStyled(mockPage, surface.mockup);
         await surface.mockPrep(mockPage);
         const mockPng = await clipShot(mockPage, surface.mockSelector);
         await mockPage.close();

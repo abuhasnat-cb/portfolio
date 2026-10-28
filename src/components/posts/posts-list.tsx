@@ -101,11 +101,7 @@ export function PostsList({
       </ul>
 
       {showViewAll ? (
-        <Link
-          href="/posts/"
-          className="posts-viewall viewall"
-          data-posts-view-all=""
-        >
+        <Link href="/posts/" className="viewall" data-posts-view-all="">
           View all posts <span aria-hidden="true">→</span>
         </Link>
       ) : null}

@@ -66,7 +66,7 @@ export function PostModal({
         <div className="post-modal-chrome">
           <Link
             href={`/posts/${post.slug}/`}
-            className="posts-open-page viewall"
+            className="viewall"
             data-post-open-page=""
           >
             Open page <span aria-hidden="true">↗</span>

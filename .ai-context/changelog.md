@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-28 — Mockup offline renders + valid compares
+
+- Self-contained `.ai-context/mockups/posts/`: `./site.css`, local Geist `media/*.woff2`, removed dead GitHub Pages asset URLs; compare script verifies styled mockups and fixes static `index.html` serving.
+- Home View all uses mockup `viewall` class; compare clips `/posts` section without breadcrumb.
+
 ## 2026-10-28 — Posts UI locked mockup alignment
 
 - Committed locked reference HTML/CSS to `.ai-context/mockups/posts/` (from `portfolio-posts-mockups-locked.tar.gz`).
