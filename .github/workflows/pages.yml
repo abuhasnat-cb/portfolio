@@ -1,5 +1,8 @@
 name: Deploy GitHub Pages preview
 
+# Default: push to develop → https://abuhasnat-cb.github.io/portfolio/
+# Pre-merge: Actions → this workflow → Run workflow → choose a feature branch.
+# That temporarily replaces the develop preview until develop is redeployed.
 on:
   push:
     branches: [develop]

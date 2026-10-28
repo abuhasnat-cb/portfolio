@@ -726,6 +726,128 @@ a.t-link:hover .t-lt {
   display: none;
 }
 
+/* ---------- Posts list rows (Stack-aligned; mobile keeps index inline) ---------- */
+.posts-row-link {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  column-gap: 8px;
+  align-items: baseline;
+  padding: 14px var(--pad);
+}
+
+.posts-row-index {
+  grid-column: 1;
+  grid-row: 1;
+  width: 2ch;
+  font-family: var(--font-mono);
+  font-size: var(--text-min);
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--muted) 80%, transparent);
+}
+
+.posts-row-title {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.posts-row-date {
+  grid-column: 3;
+  grid-row: 1;
+  font-family: var(--font-sans);
+  font-size: var(--text-min);
+  line-height: 1.45;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+/* Mobile: index stays inline left of title; date under title (title-aligned) */
+@media (max-width: 640px) {
+  .posts-row-link {
+    grid-template-columns: auto minmax(0, 1fr);
+    row-gap: 4px;
+    padding-block: 16px;
+  }
+
+  .posts-row-date {
+    grid-column: 2;
+    grid-row: 2;
+    white-space: normal;
+  }
+}
+
+/* ---------- Post soft modal (desktop card; mobile full-screen sheet) ---------- */
+.post-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 0;
+}
+
+.post-modal-panel {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: none;
+  min-height: 100%;
+  flex-direction: column;
+  border: 0;
+  background: var(--bg);
+  box-shadow: none;
+}
+
+.post-modal-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding: 14px var(--pad);
+  font-family: var(--font-sans);
+  font-size: var(--text-min);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 1;
+}
+
+.post-modal-body {
+  padding: 20px var(--pad) 32px;
+}
+
+@media (min-width: 641px) {
+  .post-modal-overlay {
+    align-items: flex-start;
+    padding: max(2rem, 8vh) 1.5rem 2.5rem;
+  }
+
+  .post-modal-panel {
+    max-width: 640px;
+    min-height: 0;
+    border: 1px solid var(--line);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  }
+
+  .post-modal-chrome {
+    padding: 14px 28px;
+  }
+
+  .post-modal-body {
+    padding: 28px;
+  }
+}
+
 /* Mobile: touch-friendly 40px controls; date under role; no header wrap */
 @media (max-width: 640px) {
   :root {

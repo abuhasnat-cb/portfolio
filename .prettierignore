@@ -10,3 +10,5 @@ test-results
 public/*.ico
 public/*.png
 public/*.svg
+public/posts/*.md
+public/posts/feed.xml

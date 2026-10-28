@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Abu Hasnat Ovee — Posts</title>
+    <link>https://oveehasnat.com/posts/</link>
+    <description>Posts by Abu Hasnat Ovee</description>
+    <language>en</language>
+    <item>
+      <title><![CDATA[[SAMPLE] How this posts preview works]]></title>
+      <link>https://oveehasnat.com/posts/sample-posts-preview/</link>
+      <guid isPermaLink="true">https://oveehasnat.com/posts/sample-posts-preview/</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[PLACEHOLDER sample post for the portfolio Posts preview. Safe to delete. Explains soft modal URLs, the standalone page, and where real posts will live later.]]></description>
+      <author>Abu Hasnat Ovee</author>
+    </item>
+    <item>
+      <title><![CDATA[[SAMPLE] Notes on static export]]></title>
+      <link>https://oveehasnat.com/posts/sample-static-notes/</link>
+      <guid isPermaLink="true">https://oveehasnat.com/posts/sample-static-notes/</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[PLACEHOLDER sample about static Next.js export for portfolio previews. Not real advice copy. Remove this JSON when real posts are ready to publish.]]></description>
+      <author>Abu Hasnat Ovee</author>
+    </item>
+    <item>
+      <title><![CDATA[[SAMPLE] Agent-readable surfaces]]></title>
+      <link>https://oveehasnat.com/posts/sample-agent-surfaces/</link>
+      <guid isPermaLink="true">https://oveehasnat.com/posts/sample-agent-surfaces/</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[PLACEHOLDER sample listing agent surfaces (llms.txt, markdown mirrors, JSON-LD). Delete after the Posts preview is approved by the site owner.]]></description>
+      <author>Abu Hasnat Ovee</author>
+    </item>
+  </channel>
+</rss>

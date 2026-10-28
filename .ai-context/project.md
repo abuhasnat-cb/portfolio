@@ -21,7 +21,7 @@ Ship a fast, accessible, SEO/AEO-strong personal portfolio for **Abu Hasnat Ovee
 - Light/dark theme (Cobalt accent), Geist fonts, reduced-motion support.
 - CI: typecheck, lint, format, unit tests, static build, Playwright e2e, Lighthouse budgets, internal link check.
 - Agent context docs under `.ai-context/`.
-- **Planned:** blog Posts (§04 + `/posts` + History-API soft modal) per ADR 0012/0013 and [`.ai-context/posts-protocol.md`](posts-protocol.md) — spike done; full feature not shipped yet.
+- Blog Posts (§04 + `/posts` + History-API soft modal) per ADR 0012/0013 and [`.ai-context/posts-protocol.md`](posts-protocol.md).
 
 ## Non-goals / hard rules
 

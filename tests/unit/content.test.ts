@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { content } from "@/content";
+import { posts } from "@/content/posts";
 import { buildJsonLd } from "@/lib/json-ld";
 import { toLlmsTxt, toMarkdown } from "@/lib/markdown";
 import { PHONE_PATTERN } from "@/lib/phone-pattern";
@@ -94,13 +95,15 @@ describe("content schema", () => {
 
 describe("generated markdown artifacts", () => {
   it("produces parseable index.md with expected headings", () => {
-    const md = toMarkdown(content);
+    const md = toMarkdown(content, posts);
     expect(md).toContain("# Abu Hasnat Ovee");
     expect(md).toContain("## About");
     expect(md).toContain("## Work experience");
     expect(md).toContain("## Selected projects");
+    expect(md).toContain("## Posts");
     expect(md).toContain("## Stack");
     expect(md).toContain("## Contact");
+    expect(md).toContain("[SAMPLE]");
     expect(md).toContain("hasnat.ovee@gmail.com");
     expect(md).toContain("simplyeloped.com");
     expect(md).toMatch(/Tags:.*Laravel/);
@@ -113,15 +116,27 @@ describe("generated markdown artifacts", () => {
   });
 
   it("produces llms.txt per llmstxt.org shape", () => {
-    const txt = toLlmsTxt(content);
+    const txt = toLlmsTxt(content, posts);
     expect(txt.startsWith("# Abu Hasnat Ovee\n")).toBe(true);
     expect(txt).toMatch(/^> /m);
     expect(txt).toContain("## Profile");
     expect(txt).toContain("## Projects");
+    expect(txt).toContain("## Posts");
     expect(txt).toContain("## Links");
     expect(txt).toContain("/index.md");
+    expect(txt).toContain(`/posts/feed.xml`);
     expect(txt).toContain(`[Resume (PDF)](${content.profile.resumeUrl})`);
     expect(txt).not.toMatch(PHONE_PATTERN);
+  });
+});
+
+describe("posts content", () => {
+  it("loads published sample posts newest-first", () => {
+    expect(posts.length).toBeGreaterThanOrEqual(3);
+    expect(posts.every((p) => p.title.includes("[SAMPLE]"))).toBe(true);
+    for (let i = 1; i < posts.length; i++) {
+      expect(posts[i - 1]!.date >= posts[i]!.date).toBe(true);
+    }
   });
 });
 

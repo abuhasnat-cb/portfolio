@@ -26,6 +26,13 @@ Contact: hasnat.ovee@gmail.com. Last updated: 2026-10-22.
 - [Shippers' Council of Bangladesh](https://oveehasnat.com/index.md#shippers-council-of-bangladesh): Official website of the Shippers' Council of Bangladesh, publishing council news, publications, member services and events for the shipping and export community. Tags: Next.js, React.js, JavaScript, Node.js, Express.js, MySQL, Prisma, Tailwind CSS, Axios
 - [Workfreeli](https://work.freeli.io/): Integrated the Google Calendar API into Workfreeli, a team workspace app, for two-way event sync. Tags: Google Calendar API, Two-way sync, Integration, JavaScript
 
+## Posts
+
+- [[SAMPLE] How this posts preview works](https://oveehasnat.com/posts/sample-posts-preview/): This is a PLACEHOLDER sample so the Posts UI can be tested before real writing lands. Soft navigation opens a modal while the URL becomes /posts/sample-posts-preview/. Delete this file when real posts replace the samples. Markdown: https://oveehasnat.com/posts/sample-posts-preview.md
+- [[SAMPLE] Notes on static export](https://oveehasnat.com/posts/sample-static-notes/): PLACEHOLDER notes used to fill the Posts list during feature preview. The site stays a static export on GitHub Pages and later Cloudflare Pages. Delete this sample when real posts arrive. Markdown: https://oveehasnat.com/posts/sample-static-notes.md
+- [[SAMPLE] Agent-readable surfaces](https://oveehasnat.com/posts/sample-agent-surfaces/): PLACEHOLDER overview of agent-facing files generated beside each post. Real posts will get BlogPosting JSON-LD, RSS items, sitemap rows, and /posts/<slug>.md. Remove this sample when done testing. Markdown: https://oveehasnat.com/posts/sample-agent-surfaces.md
+- [Posts RSS](https://oveehasnat.com/posts/feed.xml)
+
 ## Links
 
 - [GitHub](https://github.com/Ovee-Hasnat): GitHub profile

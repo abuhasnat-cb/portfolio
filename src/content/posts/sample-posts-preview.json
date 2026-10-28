@@ -1,0 +1,15 @@
+{
+  "title": "[SAMPLE] How this posts preview works",
+  "slug": "sample-posts-preview",
+  "description": "PLACEHOLDER sample post for the portfolio Posts preview. Safe to delete. Explains soft modal URLs, the standalone page, and where real posts will live later.",
+  "date": "2026-10-28",
+  "tags": ["sample", "placeholder", "posts", "preview"],
+  "summary": "This is a PLACEHOLDER sample so the Posts UI can be tested before real writing lands. Soft navigation opens a modal while the URL becomes /posts/sample-posts-preview/. Delete this file when real posts replace the samples.",
+  "body": "## PLACEHOLDER  -  delete before publishing real posts\n\nThis sample exists only so GitHub Pages and local previews can exercise the Posts section, modal, and standalone page.\n\n### What you should see\n\n1. Home section **04 Posts** with title + date rows\n2. Click opens a modal; the address bar shows `/posts/sample-posts-preview/`\n3. **Open page** or a hard refresh loads the ranking standalone page\n\n```ts\n// Sample fence with a language tag (required by the posts protocol)\nexport const sample = true;\n```\n\nNo phone numbers. No repository links. Replace with a real draft from Ovee.\n",
+  "faq": [
+    {
+      "q": "Is this a real article?",
+      "a": "No. It is a PLACEHOLDER sample for previewing the Posts feature. Remove src/content/posts/sample-posts-preview.json when finished testing."
+    }
+  ]
+}

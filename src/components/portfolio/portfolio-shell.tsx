@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { SiteContent } from "@/content";
+import type { Post } from "@/content/post-schema";
 import { AgentView } from "./agent-view";
 import { HumanView } from "./human-view";
 import { SiteHeader } from "./site-header";
@@ -21,7 +22,13 @@ function readStoredMode(): Mode {
   return "human";
 }
 
-export function PortfolioShell({ content }: { content: SiteContent }) {
+export function PortfolioShell({
+  content,
+  posts,
+}: {
+  content: SiteContent;
+  posts: Post[];
+}) {
   const [mode, setMode] = useState<Mode>("human");
   const [fading, setFading] = useState(false);
   const fadeTimer = useRef<number | null>(null);
@@ -94,10 +101,10 @@ export function PortfolioShell({ content }: { content: SiteContent }) {
         />
         <div className={`stage ${fading ? "is-fading" : ""}`}>
           {mode === "human" ? (
-            <HumanView content={content} />
+            <HumanView content={content} posts={posts} />
           ) : (
             <div className="fx [--i:1]">
-              <AgentView content={content} />
+              <AgentView content={content} posts={posts} />
             </div>
           )}
         </div>

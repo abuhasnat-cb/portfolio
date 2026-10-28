@@ -147,6 +147,12 @@ Integrated the Google Calendar API into Workfreeli, a team workspace app, for tw
 - **Tags:** Google Calendar API, Two-way sync, Integration, JavaScript
 - **Live:** [Live](https://work.freeli.io/)
 
+## Posts
+
+- **[[SAMPLE] How this posts preview works](https://oveehasnat.com/posts/sample-posts-preview/)** (2026-10-28): This is a PLACEHOLDER sample so the Posts UI can be tested before real writing lands. Soft navigation opens a modal while the URL becomes /posts/sample-posts-preview/. Delete this file when real posts replace the samples.
+- **[[SAMPLE] Notes on static export](https://oveehasnat.com/posts/sample-static-notes/)** (2026-10-27): PLACEHOLDER notes used to fill the Posts list during feature preview. The site stays a static export on GitHub Pages and later Cloudflare Pages. Delete this sample when real posts arrive.
+- **[[SAMPLE] Agent-readable surfaces](https://oveehasnat.com/posts/sample-agent-surfaces/)** (2026-10-26): PLACEHOLDER overview of agent-facing files generated beside each post. Real posts will get BlogPosting JSON-LD, RSS items, sitemap rows, and /posts/<slug>.md. Remove this sample when done testing.
+
 ## Stack
 
 - **AI, Agents & Tools:** Cursor, Claude, Grok, LLMs, RAG, MCP, n8n, Vector Databases
