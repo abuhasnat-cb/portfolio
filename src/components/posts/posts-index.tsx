@@ -17,7 +17,7 @@ export function PostsIndexPage({
     >
       <div className="px-[var(--pad)]">
         <nav
-          className="font-mono text-[length:var(--text-min)] text-[var(--muted)]"
+          className="font-sans text-[length:var(--text-min)] text-[var(--muted)]"
           aria-label="Breadcrumb"
         >
           <Link
@@ -31,16 +31,9 @@ export function PostsIndexPage({
         </nav>
         <h1 className="m-0 mt-4 text-[length:var(--text-section)] font-medium tracking-[-0.025em] text-[var(--fg)]">
           Posts
-          <sup className="ml-1 align-top font-sans text-sm font-medium text-[var(--muted)]">
-            ({posts.length})
-          </sup>
         </h1>
-        <p className="mt-2 max-w-[40rem] font-sans text-[length:var(--text-body)] leading-relaxed text-[var(--muted)]">
-          Short notes on building with AI agents, RAG and full-stack web
-          products. From real projects, with real numbers.
-        </p>
       </div>
-      <div className="mt-6 border-t border-[var(--line)]">
+      <div className="mt-5 border-t border-[var(--line)]">
         <PostsList posts={posts} profile={profile} returnPath="/posts/" />
       </div>
     </main>

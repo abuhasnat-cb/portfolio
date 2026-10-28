@@ -32,6 +32,13 @@ GitHub Pages workflow deploys only on **push to `develop`** (plus `workflow_disp
 - e2e: portal parent is `body`, overlay `position:fixed` inset covering `innerWidth`×`innerHeight`, body scroll locked.
 - Artifacts: `/opt/cursor/artifacts/posts-mockup-compare/` (1440 light/dark + 390 + side-by-side compares).
 
+## Follow-ups (locked HTML mockup pass — in progress)
+
+- User clarified stale PNGs; **source of truth is mockup HTML** (`home.html` / `list.html` / `modal.html` / `post.html` + `site.css`). Those files were **not present** on the Cloud Agent VM at `uploads/` (re-attach requested).
+- Mobile home Posts fixes applied from explicit feedback + comparison shots: index inline with title; date under title (title-aligned); removed `(n)` from §04 heading; tighter type; kept `.pmore` View all; modal is a full-viewport sheet on ≤640px.
+- `/posts` index: dropped intro blurb + count superscript to match list mockup comparisons.
+- Still blocked on pixel-perfect HTML Playwright renders until the five mockup files are re-attached.
+
 ## Follow-ups
 
 - Owner review + merge (agent does not merge)

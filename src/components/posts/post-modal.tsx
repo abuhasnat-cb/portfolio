@@ -48,7 +48,7 @@ export function PostModal({
 
   const overlay = (
     <div
-      className="post-modal-overlay fixed inset-0 z-[200] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/55 p-4 pt-[max(1.5rem,6vh)] pb-10 sm:p-6 sm:pt-[max(2rem,8vh)]"
+      className="post-modal-overlay"
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
@@ -58,11 +58,8 @@ export function PostModal({
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div
-        className="post-modal-panel relative w-full max-w-[640px] border border-[var(--line)] bg-[var(--bg)] shadow-[0_24px_80px_rgba(0,0,0,0.35)]"
-        data-post-modal-panel=""
-      >
-        <div className="flex items-center justify-between gap-3 border-b border-[var(--line)] px-5 py-3.5 font-mono text-[length:var(--text-min)] sm:px-7">
+      <div className="post-modal-panel" data-post-modal-panel="">
+        <div className="post-modal-chrome">
           <Link
             href={`/posts/${post.slug}/`}
             className="text-[var(--muted)] no-underline underline-offset-2 hover:text-[var(--accent)] hover:underline"
@@ -80,7 +77,7 @@ export function PostModal({
           </button>
         </div>
 
-        <div className="px-5 py-6 sm:px-7 sm:py-8">
+        <div className="post-modal-body">
           <PostMeta post={post} titleId={titleId} />
           <div className="mt-6">
             <PostBody body={post.body} />

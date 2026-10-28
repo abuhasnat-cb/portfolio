@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-28 — Posts mobile row + sheet modal polish
+
+- Home/list rows: index stays inline with title on mobile; date under title (title-aligned); removed §04 `(n)` count; tighter sans semibold titles / faint dates.
+- Modal: ≤640px full-viewport sheet (no padded card); desktop keeps centered panel.
+- `/posts` index: breadcrumb + plain Posts heading (no blurb/count).
+- e2e asserts mobile index/title/date geometry. Mockup HTML re-attach still needed for pixel HTML renders.
+
 ## 2026-10-28 — Posts UI mockup alignment
 
 - Soft modal portals to `document.body` with fixed full-viewport backdrop + body scroll lock (fixes `.fx` transform containing-block trap).

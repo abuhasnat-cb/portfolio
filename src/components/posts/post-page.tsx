@@ -22,7 +22,7 @@ export function PostStandalonePage({
       data-post-page=""
     >
       <nav
-        className="font-mono text-[length:var(--text-min)] text-[var(--muted)]"
+        className="font-sans text-[length:var(--text-min)] text-[var(--muted)]"
         aria-label="Breadcrumb"
       >
         <Link
@@ -45,7 +45,7 @@ export function PostStandalonePage({
       <p className="mt-5">
         <Link
           href="/posts/"
-          className="font-mono text-[length:var(--text-min)] text-[var(--muted)] no-underline underline-offset-2 hover:text-[var(--accent)] hover:underline"
+          className="font-sans text-[length:var(--text-min)] text-[var(--muted)] no-underline underline-offset-2 hover:text-[var(--accent)] hover:underline"
           data-post-back=""
         >
           ← Back to posts

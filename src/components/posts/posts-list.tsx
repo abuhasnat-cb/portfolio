@@ -84,25 +84,17 @@ export function PostsList({
             >
               <Link
                 href={`/posts/${post.slug}/`}
-                className="posts-row-link flex items-baseline gap-2 py-5 pr-[var(--pad)] pl-[var(--pad)] text-[var(--fg)] no-underline transition-colors hover:text-[var(--accent)] max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-1.5"
+                className="posts-row-link text-[var(--fg)] no-underline transition-colors hover:text-[var(--accent)]"
                 data-post-link={post.slug}
                 onClick={(e) => openPost(post, href, e)}
               >
                 {numbered !== false ? (
-                  <span
-                    className="posts-row-index w-[2ch] shrink-0 font-mono text-[length:var(--text-min)] leading-6 text-[color-mix(in_srgb,var(--muted)_80%,transparent)]"
-                    aria-hidden="true"
-                  >
+                  <span className="posts-row-index" aria-hidden="true">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 ) : null}
-                <span className="min-w-0 flex-1 text-[15px] leading-6 font-medium tracking-[-0.01em]">
-                  {post.title}
-                </span>
-                <time
-                  dateTime={post.date}
-                  className="shrink-0 font-mono text-[length:var(--text-min)] leading-6 text-[var(--muted)] max-[640px]:pl-[calc(2ch+0.5rem)]"
-                >
+                <span className="posts-row-title">{post.title}</span>
+                <time dateTime={post.date} className="posts-row-date">
                   {formatPostDate(post.date)}
                 </time>
               </Link>

@@ -22,7 +22,6 @@ export function PostsSection({
           04
         </span>
         Posts
-        <sup>({posts.length})</sup>
       </h2>
       <PostsList
         posts={posts}

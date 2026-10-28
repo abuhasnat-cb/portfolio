@@ -10,10 +10,42 @@ test.describe("posts feature", () => {
     await expect(
       page.getByRole("heading", { name: /Posts/, exact: false }),
     ).toBeVisible();
+    await expect(page.locator("#posts-heading")).not.toContainText("(3)");
     await expect(page.locator("[data-posts-view-all]")).toContainText(
       "View all posts",
     );
     await expect(page.locator("[data-post-link]")).toHaveCount(3);
+  });
+
+  test("mobile posts rows keep index inline with title", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("./");
+    const link = page.locator("[data-post-link]").first();
+    await link.scrollIntoViewIfNeeded();
+    const metrics = await link.evaluate((el) => {
+      const index = el.querySelector(".posts-row-index");
+      const title = el.querySelector(".posts-row-title");
+      const date = el.querySelector(".posts-row-date");
+      if (!index || !title || !date) return null;
+      const ir = index.getBoundingClientRect();
+      const tr = title.getBoundingClientRect();
+      const dr = date.getBoundingClientRect();
+      return {
+        indexTop: ir.top,
+        titleTop: tr.top,
+        dateTop: dr.top,
+        indexLeft: ir.left,
+        titleLeft: tr.left,
+        dateLeft: dr.left,
+      };
+    });
+    expect(metrics).not.toBeNull();
+    // Index and title share a baseline/row (not stacked)
+    expect(Math.abs(metrics!.indexTop - metrics!.titleTop)).toBeLessThan(6);
+    expect(metrics!.indexLeft).toBeLessThan(metrics!.titleLeft);
+    // Date sits under the title, title-aligned (not under the index)
+    expect(metrics!.dateTop).toBeGreaterThan(metrics!.titleTop + 8);
+    expect(Math.abs(metrics!.dateLeft - metrics!.titleLeft)).toBeLessThan(4);
   });
 
   test("clicking a post from home opens modal and updates URL", async ({

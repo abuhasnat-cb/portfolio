@@ -7,14 +7,14 @@ export function PostMeta({ post, titleId }: { post: Post; titleId?: string }) {
 
   return (
     <header className="post-meta">
-      <p className="m-0 font-mono text-[length:var(--text-min)] text-[var(--muted)]">
+      <p className="m-0 font-sans text-[length:var(--text-min)] text-[var(--faint)]">
         <time dateTime={post.date}>{formatPostDate(post.date)}</time>
         <span aria-hidden="true"> · </span>
         <span>{minutes} min read</span>
       </p>
       <h1
         id={titleId}
-        className="m-0 mt-3 text-[1.375rem] leading-tight font-medium tracking-[-0.025em] text-[var(--fg)] sm:text-[1.75rem]"
+        className="m-0 mt-3 text-[1.375rem] leading-tight font-semibold tracking-[-0.025em] text-[var(--fg)] sm:text-[1.75rem]"
       >
         {post.title}
       </h1>
@@ -28,7 +28,7 @@ export function PostMeta({ post, titleId }: { post: Post; titleId?: string }) {
           {post.tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-full border border-[var(--line)] bg-[var(--soft)] px-2.5 py-1 font-mono text-[length:var(--text-min)] text-[var(--fg)]"
+              className="rounded-full border border-[var(--line)] px-2.5 py-1 font-sans text-[length:var(--text-min)] text-[var(--fg)]"
             >
               {tag}
             </li>
