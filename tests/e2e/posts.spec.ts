@@ -23,9 +23,9 @@ test.describe("posts feature", () => {
     const link = page.locator("[data-post-link]").first();
     await link.scrollIntoViewIfNeeded();
     const metrics = await link.evaluate((el) => {
-      const index = el.querySelector(".posts-row-index");
-      const title = el.querySelector(".posts-row-title");
-      const date = el.querySelector(".posts-row-date");
+      const index = el.querySelector(".pnum");
+      const title = el.querySelector(".ptitle");
+      const date = el.querySelector(".pmeta");
       if (!index || !title || !date) return null;
       const ir = index.getBoundingClientRect();
       const tr = title.getBoundingClientRect();
@@ -59,9 +59,9 @@ test.describe("posts feature", () => {
     await expect(page.getByRole("heading", { level: 1 }).first()).toContainText(
       "Abu Hasnat Ovee",
     );
-    await expect(page.locator("[data-post-modal] h1")).toContainText(
-      "[SAMPLE]",
-    );
+    await expect(
+      page.locator("[data-post-modal] [data-post-title]"),
+    ).toContainText("[SAMPLE]");
     await expect(page.locator("[data-post-author]")).toBeVisible();
     await expect(page.locator("[data-post-older]")).toBeVisible();
     expect(page.url()).toMatch(new RegExp(`/posts/${SAMPLE}/?(?:\\?.*)?$`));

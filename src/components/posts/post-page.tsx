@@ -17,60 +17,27 @@ export function PostStandalonePage({
   profile: Profile;
 }) {
   return (
-    <main
-      className="mx-auto w-full max-w-[720px] px-[var(--pad)] py-8 sm:py-10"
-      data-post-page=""
-    >
-      <nav
-        className="font-sans text-[length:var(--text-min)] text-[var(--muted)]"
-        aria-label="Breadcrumb"
-      >
-        <Link
-          href="/"
-          className="text-[var(--muted)] no-underline underline-offset-2 hover:text-[var(--accent)] hover:underline"
-        >
-          Home
-        </Link>
-        <span aria-hidden="true"> / </span>
-        <Link
-          href="/posts/"
-          className="text-[var(--muted)] no-underline underline-offset-2 hover:text-[var(--accent)] hover:underline"
-        >
-          Posts
-        </Link>
-        <span aria-hidden="true"> / </span>
-        <span className="text-[var(--faint)]">{post.slug}</span>
-      </nav>
+    <div className="stage" data-post-page="">
+      <Link href="/posts/" className="posts-crumb crumb" data-post-back="">
+        ← Back to posts
+      </Link>
 
-      <p className="mt-5">
-        <Link
-          href="/posts/"
-          className="font-sans text-[length:var(--text-min)] text-[var(--muted)] no-underline underline-offset-2 hover:text-[var(--accent)] hover:underline"
-          data-post-back=""
-        >
-          ← Back to posts
-        </Link>
-      </p>
-
-      <div className="mt-6">
+      <article className="post-article">
         <PostMeta post={post} />
-      </div>
-
-      <div className="mt-6">
         <PostBody body={post.body} />
-      </div>
+      </article>
 
       <PostAuthor profile={profile} />
       {older ? <OlderPostCard post={older} /> : null}
 
-      <p className="mt-8 font-mono text-[length:var(--text-min)] text-[var(--faint)]">
+      <p className="mx-[var(--pad)] mb-6 font-mono text-[length:var(--text-min)] text-[var(--faint)]">
         <a
           href={withBasePath(`/posts/${post.slug}.md`)}
-          className="underline-offset-2 hover:text-[var(--accent)] hover:underline"
+          className="text-[var(--faint)] underline-offset-2 hover:text-[var(--accent)] hover:underline"
         >
           Markdown version
         </a>
       </p>
-    </main>
+    </div>
   );
 }

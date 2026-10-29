@@ -74,27 +74,24 @@ export function PostsList({
 
   return (
     <>
-      <ul className="posts-list m-0 list-none p-0" data-posts-list="">
+      <ul className="plist" data-posts-list="">
         {visible.map((post, i) => {
           const href = withBasePath(`/posts/${post.slug}/`);
           return (
-            <li
-              key={post.slug}
-              className="posts-row relative m-0 border-t border-[var(--line)] first:border-t-0"
-            >
+            <li key={post.slug}>
               <Link
                 href={`/posts/${post.slug}/`}
-                className="posts-row-link text-[var(--fg)] no-underline transition-colors hover:text-[var(--accent)]"
+                className="prow"
                 data-post-link={post.slug}
                 onClick={(e) => openPost(post, href, e)}
               >
                 {numbered !== false ? (
-                  <span className="posts-row-index" aria-hidden="true">
+                  <span className="pnum" aria-hidden="true">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 ) : null}
-                <span className="posts-row-title">{post.title}</span>
-                <time dateTime={post.date} className="posts-row-date">
+                <span className="ptitle">{post.title}</span>
+                <time dateTime={post.date} className="pmeta">
                   {formatPostDate(post.date)}
                 </time>
               </Link>
@@ -104,12 +101,8 @@ export function PostsList({
       </ul>
 
       {showViewAll ? (
-        <Link
-          href="/posts/"
-          className="pmore no-underline"
-          data-posts-view-all=""
-        >
-          <span>View all posts →</span>
+        <Link href="/posts/" className="viewall" data-posts-view-all="">
+          View all posts <span aria-hidden="true">→</span>
         </Link>
       ) : null}
 

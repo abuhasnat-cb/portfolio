@@ -27,6 +27,7 @@
 - [x] Docs: posts protocol + ADR 0012 (intake checklist, locked UI/IA, no schema/UI yet)
 - [x] **Spike:** intercepting routes **unsupported** with static export; History-API soft modal + `app/posts/[slug]` standalone proven at `/` and `/portfolio` (e2e); ADR 0013
 - [x] **Feature:** Posts §04 + `/posts` + History-API modal + standalone; Zod + `pnpm post:check` + CI; SEO/AEO generators; `[SAMPLE]` placeholder posts for preview (remove before real writing)
+- [x] **Posts UI:** locked mockups in `.ai-context/mockups/posts/`; implementation aligned; compare PNGs via `scripts/posts-mockup-compare.mjs`
 
 ## Parking lot
 
