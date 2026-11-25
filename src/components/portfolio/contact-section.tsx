@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Profile } from "@/content";
 import { CopyButton } from "./copy-button";
 
@@ -25,15 +26,12 @@ export function ContactSection({ profile }: { profile: Profile }) {
           </p>
           <div className="mail mt-2 flex items-center gap-2 font-mono text-[length:var(--text-min)] leading-none text-[var(--fg)]">
             <span>{profile.email}</span>
-            <CopyButton getText={() => profile.email} idleLabel="Copy email" />
+            <CopyButton text={profile.email} idleLabel="Copy email" />
           </div>
         </div>
-        <a
-          className="btn-primary header-control"
-          href={`mailto:${profile.email}`}
-        >
-          Email me
-        </a>
+        <Link className="btn-primary header-control" href="/contact/">
+          Hire me
+        </Link>
       </div>
 
       <div className="links mt-5! flex flex-wrap gap-x-[22px] gap-y-1.5 text-[length:var(--text-min)] text-[var(--muted)]">

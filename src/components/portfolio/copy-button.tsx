@@ -4,11 +4,14 @@ import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function CopyButton({
+  text,
   getText,
   idleLabel,
   className,
 }: {
-  getText: () => string;
+  /** Preferred for Server Components (serializable). */
+  text?: string;
+  getText?: () => string;
   idleLabel: string;
   className?: string;
 }) {
@@ -16,7 +19,7 @@ export function CopyButton({
   const timer = useRef<number | null>(null);
 
   async function onCopy() {
-    const value = getText();
+    const value = text ?? getText?.() ?? "";
     setDone(true);
     if (timer.current) window.clearTimeout(timer.current);
     timer.current = window.setTimeout(() => setDone(false), 1800);

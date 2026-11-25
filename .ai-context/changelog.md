@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-25 — Contact page, SEO helper, Zoho SMTP worker
+
+- `/contact/` with hire/chat form, page-level OG metadata, sitemap entry.
+- Hire me CTAs route to contact page; Zoho SMTP handler in `contact-api/` + `functions/api/contact.ts`.
+- `buildPageMetadata`, `NEXT_PUBLIC_CONTACT_API_URL` for GitHub Pages preview.
+
 ## 2026-10-28 — Mockup offline renders + valid compares
 
 - Self-contained `.ai-context/mockups/posts/`: `./site.css`, local Geist `media/*.woff2`, removed dead GitHub Pages asset URLs; compare script verifies styled mockups and fixes static `index.html` serving.
