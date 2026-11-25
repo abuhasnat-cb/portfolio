@@ -1,9 +1,0 @@
-name = "portfolio-contact-api"
-main = "src/index.ts"
-compatibility_date = "2024-11-01"
-compatibility_flags = ["nodejs_compat"]
-
-[vars]
-# Override in Cloudflare dashboard or via wrangler secret.
-ZOHO_SMTP_HOST = "smtp.zoho.com"
-ZOHO_SMTP_PORT = "587"

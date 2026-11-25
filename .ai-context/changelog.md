@@ -1,10 +1,13 @@
 # Changelog
 
-## 2026-11-25 — Contact page, SEO helper, Zoho SMTP worker
+## 2026-11-25 — Revert contact page (owner preference)
 
-- `/contact/` with hire/chat form, page-level OG metadata, sitemap entry.
-- Hire me CTAs route to contact page; Zoho SMTP handler in `contact-api/` + `functions/api/contact.ts`.
-- `buildPageMetadata`, `NEXT_PUBLIC_CONTACT_API_URL` for GitHub Pages preview.
+- Removed `/contact/`, form, and Zoho worker; restored Get in touch → `#contact` and Email me mailto.
+- Kept layout `formatDetection` from prior PR. See ADR 0015.
+
+## 2026-11-25 — Contact page, SEO helper, Zoho SMTP worker (reverted in ADR 0015)
+
+- Was: `/contact/`, Hire me CTAs, `contact-api/`, `buildPageMetadata` on contact route.
 
 ## 2026-10-28 — Mockup offline renders + valid compares
 

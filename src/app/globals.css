@@ -531,27 +531,6 @@ button {
   filter: brightness(1.06);
 }
 
-.contact-input {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--bg);
-  color: var(--fg);
-  font: inherit;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.contact-input:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-.contact-input:disabled {
-  opacity: 0.65;
-}
-
 .cta-link {
   padding: 0 14px;
   border: 1px solid var(--line);

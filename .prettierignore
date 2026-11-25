@@ -5,6 +5,7 @@ pnpm-lock.yaml
 coverage
 .lighthouseci
 playwright-report
+.playwright-mcp
 test-results
 .preview
 .ai-context/mockups/**
