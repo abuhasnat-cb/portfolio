@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted
+Superseded by [0015-revert-contact-page.md](./0015-revert-contact-page.md)
 
 ## Context
 

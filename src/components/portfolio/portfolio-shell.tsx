@@ -76,6 +76,20 @@ export function PortfolioShell({
     [mode, applyMode],
   );
 
+  const onContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (mode !== "agent") return;
+    const el = document.getElementById("md-contact");
+    if (!el) return;
+    e.preventDefault();
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    el.scrollIntoView({
+      behavior: reduce ? "auto" : "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div className="page-shell">
       <main className="col-wrap">
@@ -83,6 +97,7 @@ export function PortfolioShell({
           profile={content.profile}
           mode={mode}
           onModeChange={changeMode}
+          onContactClick={onContactClick}
         />
         <div className={`stage ${fading ? "is-fading" : ""}`}>
           {mode === "human" ? (

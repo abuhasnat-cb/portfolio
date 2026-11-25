@@ -25,13 +25,13 @@ export function PostsChrome({
           <ThemeToggle />
           <Link
             className="cta-link header-control header-contact"
-            href="/contact/"
-            aria-label="Hire me — contact page"
-            title="Hire me"
+            href="/#contact"
+            aria-label="Get in touch"
+            title="Get in touch"
           >
-            <span className="header-label-full">Hire me</span>
+            <span className="header-label-full">Get in touch</span>
             <span className="header-label-short" aria-hidden="true">
-              Hire
+              Contact
             </span>
             <svg
               className="header-label-icon size-[15px]"

@@ -49,8 +49,6 @@ src/
 
 **Temporary preview:** On push to `develop`, `.github/workflows/pages.yml` builds with `NEXT_PUBLIC_BASE_PATH=/portfolio` and `SITE_URL=https://abuhasnat-cb.github.io/portfolio`, then deploys via GitHub Pages (`configure-pages` / `upload-pages-artifact` / `deploy-pages`). Preview is noindex. See ADR 0008.
 
-**Contact form API:** Static export cannot send mail. `contact-api/` (Cloudflare Worker) and `functions/api/contact.ts` send via Zoho SMTP using platform secrets; preview builds set `NEXT_PUBLIC_CONTACT_API_URL` to the production worker. See ADR 0014.
-
 Site URL and base path are resolved in `src/lib/site-env.ts` and applied in `next.config.ts`, `src/content/index.ts`, generators, and layout metadata.
 
 ## Testing layers
