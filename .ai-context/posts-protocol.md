@@ -20,14 +20,14 @@ Use this protocol whenever Ovee hands you a post (as JSON or draft copy) and ask
 
 Insert after **Stack (04)** and before **Contact (06)**. Section indices:
 
-| Index  | Section              |
-| ------ | -------------------- |
-| 01     | About                |
-| 02     | Experience           |
-| 03     | Projects             |
-| **04** | **Stack**            |
-| **05** | **Posts**            |
-| **06** | **Contact**          |
+| Index  | Section     |
+| ------ | ----------- |
+| 01     | About       |
+| 02     | Experience  |
+| 03     | Projects    |
+| **04** | **Stack**   |
+| **05** | **Posts**   |
+| **06** | **Contact** |
 
 Posts list UI (landing):
 
