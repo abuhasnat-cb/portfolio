@@ -47,7 +47,7 @@ export function ModeToggle({
         role="radio"
         data-mode="agent"
         aria-checked={mode === "agent"}
-        aria-label="Agent view (markdown)"
+        aria-label="Agent view"
         aria-describedby="tip-agent"
         className="modes-btn"
         onClick={() => onChange("agent")}
@@ -65,7 +65,7 @@ export function ModeToggle({
           <path d="m7 10 3 2.5L7 15M12.5 15H17" />
         </svg>
         <span className="tip" role="tooltip" id="tip-agent">
-          Agent view (markdown)
+          Agent view
         </span>
       </button>
     </div>

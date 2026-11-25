@@ -4,7 +4,7 @@ import { expect, test } from "@playwright/test";
 const SAMPLE = "sample-posts-preview";
 
 test.describe("posts feature", () => {
-  test("home §04 lists latest posts and View all", async ({ page }) => {
+  test("home §05 lists latest posts and View all", async ({ page }) => {
     await page.goto("./");
     await expect(page.locator("[data-posts-section]")).toBeVisible();
     await expect(

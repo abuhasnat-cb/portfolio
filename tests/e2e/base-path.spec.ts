@@ -25,7 +25,7 @@ test.describe("GitHub Pages base path (/portfolio)", () => {
       .getAttribute("content");
     expect(robots).toMatch(/noindex/i);
 
-    await page.getByRole("radio", { name: "Agent view (markdown)" }).click();
+    await page.getByRole("radio", { name: "Agent view" }).click();
     const mdLink = page.getByRole("link", { name: "/index.md" });
     await expect(mdLink).toHaveAttribute("href", "/portfolio/index.md");
 

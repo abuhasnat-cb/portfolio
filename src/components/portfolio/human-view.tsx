@@ -51,13 +51,13 @@ export function HumanView({
       <div className="hatch-sep screen-line-bottom" aria-hidden="true" />
 
       <div className="fx [--i:6]">
-        <PostsSection posts={posts} profile={profile} />
+        <StackSection skills={skills} />
       </div>
 
       <div className="hatch-sep screen-line-bottom" aria-hidden="true" />
 
       <div className="fx [--i:7]">
-        <StackSection skills={skills} />
+        <PostsSection posts={posts} profile={profile} />
       </div>
 
       <div className="hatch-sep screen-line-bottom" aria-hidden="true" />

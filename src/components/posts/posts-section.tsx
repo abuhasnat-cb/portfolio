@@ -2,7 +2,7 @@ import type { Profile } from "@/content";
 import type { Post } from "@/content/post-schema";
 import { PostsList } from "./posts-list";
 
-/** Landing §04 Posts — latest 3 rows + View all. */
+/** Landing §05 Posts — latest 3 rows + View all. */
 export function PostsSection({
   posts,
   profile,
@@ -19,7 +19,7 @@ export function PostsSection({
     >
       <h2 id="posts-heading" className="section-title">
         <span className="section-index" aria-hidden="true">
-          04
+          05
         </span>
         Posts
       </h2>

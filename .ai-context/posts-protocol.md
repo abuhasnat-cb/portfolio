@@ -16,18 +16,18 @@ Use this protocol whenever Ovee hands you a post (as JSON or draft copy) and ask
 
 ## Locked product shape (do not redesign)
 
-### Landing page — section **04 Posts**
+### Landing page — section **05 Posts**
 
-Insert between **Projects (03)** and **Stack**. Renumber:
+Insert after **Stack (04)** and before **Contact (06)**. Section indices:
 
-| Index  | Section              |
-| ------ | -------------------- |
-| 01     | About                |
-| 02     | Experience           |
-| 03     | Projects             |
-| **04** | **Posts**            |
-| **05** | **Stack** (was 04)   |
-| **06** | **Contact** (was 05) |
+| Index  | Section     |
+| ------ | ----------- |
+| 01     | About       |
+| 02     | Experience  |
+| 03     | Projects    |
+| **04** | **Stack**   |
+| **05** | **Posts**   |
+| **06** | **Contact** |
 
 Posts list UI (landing):
 
