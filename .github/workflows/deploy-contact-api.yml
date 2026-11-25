@@ -1,0 +1,36 @@
+name: Deploy contact API (Cloudflare Worker)
+
+# Deploys the Zoho SMTP handler used by the static site contact form.
+# Secrets (repository or environment): CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID,
+# ZOHO_SMTP_USER, ZOHO_SMTP_PASSWORD, CONTACT_TO_EMAIL
+# Optional: ZOHO_SMTP_HOST, ZOHO_SMTP_PORT, ALLOWED_ORIGINS
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [develop]
+    paths:
+      - "contact-api/**"
+      - "functions/api/**"
+
+jobs:
+  deploy:
+    name: Wrangler deploy
+    runs-on: ubuntu-latest
+    if: >-
+      ${{ vars.ENABLE_CONTACT_API_DEPLOY == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install contact-api deps
+        working-directory: contact-api
+        run: pnpm install --no-frozen-lockfile
+      - name: Deploy Worker
+        working-directory: contact-api
+        run: pnpm exec wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

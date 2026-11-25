@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { Profile } from "@/content";
 import { AoMark } from "./ao-mark";
 import { ModeToggle } from "./mode-toggle";
@@ -11,12 +12,10 @@ export function SiteHeader({
   profile,
   mode,
   onModeChange,
-  onContactClick,
 }: {
   profile: Profile;
   mode: Mode;
   onModeChange: (mode: Mode) => void;
-  onContactClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
   const showResume = Boolean(profile.resumeUrl);
 
@@ -33,16 +32,15 @@ export function SiteHeader({
         aria-label="Primary"
       >
         <ThemeToggle />
-        <a
+        <Link
           className="cta-link header-control header-contact"
-          href="#contact"
-          aria-label="Get in touch"
-          title="Get in touch"
-          onClick={onContactClick}
+          href="/contact/"
+          aria-label="Hire me — contact page"
+          title="Hire me"
         >
-          <span className="header-label-full">Get in touch</span>
+          <span className="header-label-full">Hire me</span>
           <span className="header-label-short" aria-hidden="true">
-            Contact
+            Hire
           </span>
           <svg
             className="header-label-icon size-[15px]"
@@ -57,7 +55,7 @@ export function SiteHeader({
             <rect x="3" y="5" width="18" height="14" rx="2" />
             <path d="m3 7 9 6 9-6" />
           </svg>
-        </a>
+        </Link>
         {showResume ? (
           <a
             className="btn-primary header-control header-resume"

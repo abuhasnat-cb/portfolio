@@ -209,6 +209,7 @@ export function toSitemapXml(
     { loc: `${base}/`, lastmod, priority: "1.0" },
     { loc: `${base}/index.md`, lastmod, priority: "0.8" },
     { loc: `${base}/llms.txt`, lastmod, priority: "0.8" },
+    { loc: `${base}/contact/`, lastmod, priority: "0.9" },
     { loc: `${base}/posts/`, lastmod, priority: "0.9" },
     { loc: `${base}/posts/feed.xml`, lastmod, priority: "0.7" },
   ];

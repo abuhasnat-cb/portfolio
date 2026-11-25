@@ -25,6 +25,8 @@ const eslintConfig = [
       "test-results/**",
       ".lighthouseci/**",
       ".preview/**",
+      "contact-api/**",
+      "functions/**",
     ],
   },
 ];
