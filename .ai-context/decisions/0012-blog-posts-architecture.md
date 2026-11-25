@@ -12,7 +12,7 @@ The portfolio is a single-page static export today. Ovee wants a Posts section a
 
 ### Information architecture
 
-- Landing section **04 Posts** sits between Projects (03) and Stack; Stack becomes **05**, Contact **06**.
+- Landing section **05 Posts** sits after Stack (**04**) and before Contact (**06**). (2026-11-25: owner moved Posts below Stack; was briefly 04 between Projects and Stack.)
 - Landing shows the latest **3** posts as numbered rows (faint mono indices, Stack-aligned insets): title + date only, plus full-width **View all posts →** (Projects **Show all** styling). Accent remains Cobalt.
 - `/posts` is a plain list (heading + same row pattern for all posts).
 - Reading a post uses Next.js **parallel + intercepting routes** (`@modal`, `(.)posts/[slug]`): soft navigation opens a modal and sets `/posts/<slug>`; hard navigation / refresh renders the standalone page (canonical ranking URL).

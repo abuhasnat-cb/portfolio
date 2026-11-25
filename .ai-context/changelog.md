@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-25 — Section order and posts UI tweaks
+
+- Home order: Stack (04) → Posts (05) → Contact (06).
+- Post list titles regular weight; Agent mode tooltip label shortened.
+- Removed Smart Jute live link from content.
+
 ## 2026-11-25 — Revert contact page (owner preference)
 
 - Removed `/contact/`, form, and Zoho worker; restored Get in touch → `#contact` and Email me mailto.

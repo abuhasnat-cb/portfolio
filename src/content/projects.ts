@@ -220,7 +220,7 @@ export const projects: Project[] = [
       "RBAC",
     ],
     visibleTags: ["React.js", "Redux Toolkit", "Tailwind CSS", "RBAC"],
-    links: [{ label: "Live", href: "https://sjis.dgjute.gov.bd/" }],
+    links: [],
     metaTitle: "Smart Jute Information Software | Abu Hasnat Ovee",
     schemaType: "SoftwareApplication",
   },

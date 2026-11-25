@@ -131,7 +131,7 @@ test.describe("portfolio", () => {
 
   test("Human / Agent icon toggle shows markdown view", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("radio", { name: "Agent view (markdown)" }).click();
+    await page.getByRole("radio", { name: "Agent view" }).click();
     await expect(page.getByText("index.md", { exact: true })).toBeVisible();
     await expect(
       page.getByRole("document", { name: /Markdown source/i }),
@@ -149,12 +149,12 @@ test.describe("portfolio", () => {
   }) => {
     await page.goto("/");
     const human = page.getByRole("radio", { name: "Human view" });
-    const agent = page.getByRole("radio", { name: "Agent view (markdown)" });
+    const agent = page.getByRole("radio", { name: "Agent view" });
     const humanTip = page.locator("#tip-human");
     const agentTip = page.locator("#tip-agent");
 
     await expect(humanTip).toHaveText("Human view");
-    await expect(agentTip).toHaveText("Agent view (markdown)");
+    await expect(agentTip).toHaveText("Agent view");
 
     await human.hover();
     await expect(humanTip).toBeVisible();
@@ -294,7 +294,7 @@ test.describe("portfolio", () => {
   test("reduced motion skips fade when switching modes", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
-    await page.getByRole("radio", { name: "Agent view (markdown)" }).click();
+    await page.getByRole("radio", { name: "Agent view" }).click();
     await expect(
       page.getByRole("document", { name: /Markdown source/i }),
     ).toBeVisible();

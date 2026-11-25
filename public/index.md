@@ -128,7 +128,6 @@ Single-page app for the Ministry of Jute & Textile, Bangladesh, managing nationw
 - **Excerpt:** React SPA for nationwide jute data at a Bangladesh ministry: role-based dashboards, data entry and official reports.
 - **Company:** Tech Solution Factory
 - **Tags:** JavaScript, React.js, Redux Toolkit, React Hook Form, Tailwind CSS, Axios, Chart.js, Keep React UI, Government, RBAC
-- **Live:** [Live](https://sjis.dgjute.gov.bd/)
 
 ### Shippers' Council of Bangladesh
 
