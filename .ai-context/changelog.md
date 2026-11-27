@@ -2,7 +2,7 @@
 
 ## 2026-11-27 — About copy and contact card gradient
 
-- About aligned with latest resume profile; contact hiring card uses top-right radial indigo→white gradient; pitch row aligns with Email me, mail row spaced below.
+- About aligned with latest resume profile; contact hiring card uses compact top-right radial glow (light only); pitch row aligns with Email me, mail row spaced below.
 
 ## 2026-11-25 — Section order and posts UI tweaks
 

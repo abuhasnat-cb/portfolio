@@ -532,15 +532,15 @@ button {
 }
 
 .contact-card {
-  background: radial-gradient(circle at 85% 15%, #e0e3fb 0%, #ffffff 60%);
+  background: radial-gradient(
+    circle 5.5rem at 85% 15%,
+    #e0e3fb 0%,
+    #ffffff 60%
+  );
 }
 
 .dark .contact-card {
-  background: radial-gradient(
-    circle at 85% 15%,
-    color-mix(in srgb, #e0e3fb 28%, var(--bg)) 0%,
-    var(--bg) 60%
-  );
+  background: var(--bg);
 }
 
 .cta-link {
