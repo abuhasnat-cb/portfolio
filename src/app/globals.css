@@ -531,6 +531,24 @@ button {
   filter: brightness(1.06);
 }
 
+.contact-card {
+  background: linear-gradient(
+    145deg,
+    var(--bg) 0%,
+    color-mix(in srgb, var(--accent) 7%, var(--bg)) 55%,
+    color-mix(in srgb, var(--accent) 4%, var(--bg)) 100%
+  );
+}
+
+.dark .contact-card {
+  background: linear-gradient(
+    145deg,
+    var(--bg) 0%,
+    color-mix(in srgb, var(--accent) 10%, var(--bg)) 50%,
+    color-mix(in srgb, var(--accent) 5%, var(--bg)) 100%
+  );
+}
+
 .cta-link {
   padding: 0 14px;
   border: 1px solid var(--line);

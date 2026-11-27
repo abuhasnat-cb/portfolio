@@ -6,7 +6,7 @@ timezone: Asia/Dhaka (GMT+6)
 status: Open to Software Engineer (L2/L3) roles, in Bangladesh or remote
 email: hasnat.ovee@gmail.com
 website: https://oveehasnat.com
-updated: 2026-10-22
+updated: 2026-11-27
 ---
 
 # Abu Hasnat Ovee
@@ -26,9 +26,9 @@ _Full-stack engineer working with domain-driven design and agent-first workflows
 
 ## About
 
-I design the architecture; coding agents write the code. Working AI-first with **Cursor**, **Claude**, **MCP** and multi-agent development, with code review of every agent-written change and end-to-end tests, I ship **~60–70%** faster without losing quality.
+Software engineer with around **3 years** of experience building web products for **SaaS**, **marketplaces**, **EdTech**, and **enterprise** clients; from US-facing products to large-scale job portals and government systems.
 
-Over **3+ years** I've built web products for SaaS, marketplaces, EdTech and enterprise systems, including Alljobs by Teletalk with **700,000+** monthly users, ERP modules and government software, mostly with **React**, **Next.js**, **TypeScript**, **Node.js** and **Laravel**. Looking for Software Engineer (L2/L3) roles, in Bangladesh or remote.
+I work **AI-first**: I own the architecture and product decisions, use agents for implementation under review, and back releases with **E2E testing**. That's how I've cut shipping time by **~60–70%** while keeping production quality. Stack-wise I'm strongest in **React**, **Next.js**, **TypeScript**, **Node.js**, and **Laravel**. Open to **L2/L3 SWE** roles in Bangladesh or remote.
 
 ## Work experience
 

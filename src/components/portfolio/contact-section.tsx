@@ -15,15 +15,15 @@ export function ContactSection({ profile }: { profile: Profile }) {
         Contact
       </h2>
 
-      <div className="contact mt-5! flex items-center justify-between gap-5 border border-[var(--line)] bg-[var(--soft)] p-6 max-[600px]:flex-col max-[600px]:items-start">
-        <div>
-          <p className="text-[var(--muted)]">
-            <b className="mb-0 block font-medium text-[var(--fg)]">
+      <div className="contact contact-card mt-5! flex min-h-[7.5rem] items-center justify-between gap-8 border border-[var(--line)] px-7 py-8 max-[600px]:min-h-0 max-[600px]:flex-col max-[600px]:items-start max-[600px]:gap-6">
+        <div className="flex flex-col gap-3">
+          <p className="m-0 text-[var(--muted)]">
+            <b className="mb-1.5 block font-medium text-[var(--fg)]">
               {profile.contact.pitch}
             </b>
             {profile.contact.note}
           </p>
-          <div className="mail mt-2 flex items-center gap-2 font-mono text-[length:var(--text-min)] leading-none text-[var(--fg)]">
+          <div className="mail flex items-center gap-2 font-mono text-[length:var(--text-min)] leading-none text-[var(--fg)]">
             <span>{profile.email}</span>
             <CopyButton text={profile.email} idleLabel="Copy email" />
           </div>
