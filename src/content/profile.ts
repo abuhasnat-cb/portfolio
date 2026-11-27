@@ -17,12 +17,12 @@ export const profile: Profile = {
   email: "hasnat.ovee@gmail.com",
   site: "oveehasnat.com",
   url: "https://oveehasnat.com",
-  updated: "2026-10-22",
+  updated: "2026-11-27",
   resumeUrl:
     "https://drive.google.com/file/d/1n2UPcdnSnn6oWJz-YdfI_WQrEWGo8Kgt/view?usp=drivesdk",
   about: [
-    "I design the architecture; coding agents write the code. Working AI-first with **Cursor**, **Claude**, **MCP** and multi-agent development, with code review of every agent-written change and end-to-end tests, I ship ==~60–70%== faster without losing quality.",
-    "Over ==3+ years== I've built web products for SaaS, marketplaces, EdTech and enterprise systems, including Alljobs by Teletalk with ==700,000+== monthly users, ERP modules and government software, mostly with **React**, **Next.js**, **TypeScript**, **Node.js** and **Laravel**. Looking for Software Engineer (L2/L3) roles, in Bangladesh or remote.",
+    "Software engineer with around ==3 years== of experience building web products for **SaaS**, **marketplaces**, **EdTech**, and **enterprise** clients; from US-facing products to large-scale job portals and government systems.",
+    "I work **AI-first**: I own the architecture and product decisions, use agents for implementation under review, and back releases with **E2E testing**. That's how I've cut shipping time by ==~60–70%== while keeping production quality. Stack-wise I'm strongest in **React**, **Next.js**, **TypeScript**, **Node.js**, and **Laravel**. Open to **L2/L3 SWE** roles in Bangladesh or remote.",
   ],
   contact: {
     pitch: "Hiring for a Software Engineer (L2/L3)?",
