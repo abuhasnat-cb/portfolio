@@ -532,20 +532,14 @@ button {
 }
 
 .contact-card {
-  background: linear-gradient(
-    145deg,
-    var(--bg) 0%,
-    color-mix(in srgb, var(--accent) 7%, var(--bg)) 55%,
-    color-mix(in srgb, var(--accent) 4%, var(--bg)) 100%
-  );
+  background: radial-gradient(circle at 85% 15%, #e0e3fb 0%, #ffffff 60%);
 }
 
 .dark .contact-card {
-  background: linear-gradient(
-    145deg,
-    var(--bg) 0%,
-    color-mix(in srgb, var(--accent) 10%, var(--bg)) 50%,
-    color-mix(in srgb, var(--accent) 5%, var(--bg)) 100%
+  background: radial-gradient(
+    circle at 85% 15%,
+    color-mix(in srgb, #e0e3fb 28%, var(--bg)) 0%,
+    var(--bg) 60%
   );
 }
 

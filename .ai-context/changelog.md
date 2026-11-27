@@ -2,7 +2,7 @@
 
 ## 2026-11-27 — About copy and contact card gradient
 
-- About aligned with latest resume profile; contact hiring card uses sober white→accent gradient and more spacing.
+- About aligned with latest resume profile; contact hiring card uses top-right radial indigo→white gradient and more spacing.
 
 ## 2026-11-25 — Section order and posts UI tweaks
 
